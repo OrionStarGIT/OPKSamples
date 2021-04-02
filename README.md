@@ -1,6 +1,6 @@
 # HelloRobotSample
 ## 1.目录结构
-├─app 业务代码
+├─app 业务代码  
 │  ├─demo  
 │  │  ├─ConfigUtils.ts 服务器配置参数获取   
 │  │  ├─DemoEvent.ts 从当前页面跳转至其他页面的事件定义(在trigger中使用)  
@@ -48,7 +48,7 @@ npm install -g orionos-sh --registry=https://npm.ainirobot.com/repository/eve-gr
 ~~~~
 ### 2.3安装IDE
 可使用WebStorm 或Visual Studio Code，直接从官网下载即可。
-##3.运行程序
+## 3.运行程序
 连接机器人，执行如下命令：
 ~~~~
 orionos-sh debug
