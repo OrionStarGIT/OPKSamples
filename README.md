@@ -1,5 +1,5 @@
-#HelloRobotSample
-##1.目录结构
+# HelloRobotSample
+## 1.目录结构
 ├─app 业务代码
 │  ├─demo  
 │  │  ├─ConfigUtils.ts 服务器配置参数获取   
@@ -18,10 +18,10 @@
 ├─app.json 基本配置文件，不能修改  
 ├─index.js 程序入口  
 ├─package.json npm依赖包管理
-##2.配置开发环境
+## 2.配置开发环境
 开发环境需要依赖以下开发工具：Node10及以上且不高于Node13版本、orionos-sh脚手架、IDE工具。  
 **PS：请将您的adb更新为最新版本**
-###2.1安装nodejs
+### 2.1安装nodejs
 -  windows  
    Windows系统需要安装12.10以下版本的nodejs，点击网址下载nodejs：https://nodejs.org/dist/v12.10.0/  
    node-v12.10.0-x64.msi  
@@ -36,7 +36,7 @@
 ~~~~
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ~~~~
-###2.2安装脚手架工具
+### 2.2安装脚手架工具
 登录npm 服务器 (如果您是首次登陆，请联系售前，申请npm账号密码）  
 在Windows上点击【开始】-【运行】-【输入CMD】，在命令行界面输入如下命令并输入npm用户名、密码和邮箱:
 ~~~~
@@ -46,12 +46,12 @@ npm login --registry=https://npm.ainirobot.com/repository/eve-group/
 ~~~~
 npm install -g orionos-sh --registry=https://npm.ainirobot.com/repository/eve-group/
 ~~~~
-###2.3安装IDE
+### 2.3安装IDE
 可使用WebStorm 或Visual Studio Code，直接从官网下载即可。
 ##3.运行程序
 连接机器人，执行如下命令：
 ~~~~
 orionos-sh debug
 ~~~~
-###4.更多帮助内容请查看官网文档
+### 4.更多帮助内容请查看官网文档
 http://orionbase.cn/
