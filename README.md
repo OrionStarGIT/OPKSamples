@@ -1,8 +1,7 @@
 # HelloRobotSample
 ## 1.目录结构
-├─app 业务代码
-│  ├─demo  
-│  │  ├─ConfigUtils.ts 服务器配置参数获取   
+├─app 业务代码  
+│  ├─demo     
 │  │  ├─DemoEvent.ts 从当前页面跳转至其他页面的事件定义(在trigger中使用)  
 │  │  ├─DemoModel.ts 业务模块的数据模型  
 │  │  ├─DemoScreen.tsx 当前业务模块的入口，负责各个组件的组合和初始化  
@@ -10,6 +9,8 @@
 │  │  ├─DemoView.tsx 业务模块的UI显示  
 │  │  ├─DemoViewModel.ts 负责模块的业务逻辑控制  
 │  │  ├─DemoVoice.ts 负责业务模块语音识别的相关功能  
+│  ├─utils  
+│  │  ├─ConfigUtils.ts 服务器配置参数获取  
 │  ├─App.js App的主界面  
 │  ├─AppDebug.js App的调试主界面（调试的时候启动OPK不带参数，可以在这里模拟数据）    
 ├─dist OPK存储目录（初始可能不存在，打包OPK后自动创建）  
