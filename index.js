@@ -18,6 +18,7 @@ import { AppRegistry } from 'react-native';
 import App from './app/App';
 import { name as appName } from './app.json';
 import AppDebug from './app/AppDebug';
+import { appid } from './package.json';
 
 //关闭其中某些yellow警告
 console.ignoredYellowBox = ['Warning: BackAndroid is deprecated. Please use BackHandler instead.', 'source.uri should not be an empty string', 'Invalid props.style key'];
@@ -37,7 +38,9 @@ AppRegistry.registerConfig([{
     //启动action，需配合语音使用
     action: 'action_demo',
     //优先级
-    priority: 1
+    priority: 1,
+    //应用id
+    appId: appid
 }]);
 
 //Debug调试使用
