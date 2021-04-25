@@ -17,11 +17,13 @@
 import * as React from 'react';
 import {
     BaseComponent,
-    BaseComponentProps
+    BaseComponentProps,
+    triggerManager
 } from 'orionos-eve-core';
 import { DemoViewModel } from './DemoViewModel';
 import { DemoVoice } from './DemoVoice';
 import { DemoView } from './DemoView';
+import { DemoTrigger } from './DemoTrigger';
 
 export class DemoScreen
     extends BaseComponent<BaseComponentProps, DemoViewModel, DemoVoice> {
@@ -36,6 +38,7 @@ export class DemoScreen
         let viewModel = new DemoViewModel();
         this.setViewModel(viewModel);
         this.setVoice(new DemoVoice(viewModel));
+        triggerManager.addTrigger(new DemoTrigger());
     }
 
     /**
