@@ -1,0 +1,81 @@
+{
+  "name": "Demo",
+  "version": "0.0.2",
+  "appid": "system_2d01160272669884793b18983a46dcd0",
+  "private": true,
+  "commitId": "",
+  "opkType": "plugin",
+  "scripts": {
+    "run": "orionos-sh run",
+    "pack": "orionos-sh pack",
+    "debug": "orionos-sh debug"
+  },
+  "dependencies": {
+    "@types/react-native-snap-carousel": "^3.7.4",
+    "eslint-plugin-orion-os": "^0.8.0",
+    "orionos-eve-core": "2.3.0",
+    "react-native-snap-carousel": "^3.8.0",
+    "rn-viewpager": "^1.2.9"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-proposal-decorators": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "@babel/runtime": "7.4.5",
+    "@types/jest": "24.0.13",
+    "@types/react": "16.8.21",
+    "@types/react-native": "0.57.65",
+    "@types/react-test-renderer": "16.8.1",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "24.8.0",
+    "eslint": "5.16.0",
+    "eslint-config-koot": "0.1.0",
+    "jest": "24.8.0",
+    "jsc-android": "236355.1.1",
+    "lint-staged": "8.1.6",
+    "metro-react-native-babel-preset": "0.53.1",
+    "prettier": "1.17.0",
+    "react-native-typescript-transformer": "1.2.12",
+    "react-test-renderer": "16.8.3",
+    "ts-jest": "24.0.0",
+    "typescript": "3.4.3"
+  },
+  "jest": {
+    "jest": {
+      "preset": "react-native",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js"
+      ],
+      "transform": {
+        "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+        "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      },
+      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+      "testPathIgnorePatterns": [
+        "\\.snap$",
+        "<rootDir>/node_modules/"
+      ],
+      "cacheDirectory": ".jest/cache"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,cjs,mjs}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md,css,less,sass,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

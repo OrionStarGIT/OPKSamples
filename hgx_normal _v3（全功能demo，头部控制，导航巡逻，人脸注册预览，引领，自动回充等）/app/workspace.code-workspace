@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../hgx_plugin"
+		}
+	],
+	"settings": {}
+}
