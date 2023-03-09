@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--    <TextView-->
+<!--        android:id="@+id/asr_tts_contents"-->
+<!--        android:layout_width="500dp"-->
+<!--        android:layout_height="84dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@color/colorGreyWhite"-->
+<!--        android:text="Asr_Tts" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:orientation="horizontal"/>-->
+
+        <TextView
+            android:id="@+id/domain_intent_contents"
+            android:layout_width="400dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="10dp"
+            android:maxLines="8"
+            android:background="@color/colorGreyWhite"
+            android:text="Domain_Intent" />
+
+</LinearLayout>

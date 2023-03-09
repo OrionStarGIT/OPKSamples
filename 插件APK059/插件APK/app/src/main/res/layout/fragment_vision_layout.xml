@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/trace_face_btn"
+            style="@style/TextStyle"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/vision_trace_face" />
+
+        <Button
+            android:id="@+id/stop_trace_face_btn"
+            style="@style/TextStyle"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/vision_stop_trace_face" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vision_warning"
+        />
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/trigger_to_home"
+        android:layout_marginLeft="8dp"
+        style="@style/TextStyle"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:text="@string/trigger_to_home" />
+
+    <Button
+        android:id="@+id/trigger_to_wakeUp"
+        android:layout_marginLeft="8dp"
+        style="@style/TextStyle"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:text="@string/trigger_to_wakeUp" />
+
+    <Button
+        android:id="@+id/trigger_to_queryLocation"
+        android:layout_marginLeft="8dp"
+        style="@style/TextStyle"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:text="@string/trigger_to_queryLocation" />
+
+    <Button
+        android:id="@+id/trigger_to_weather"
+        android:layout_marginLeft="8dp"
+        style="@style/TextStyle"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:text="@string/trigger_to_weather" />
+
+</LinearLayout>
