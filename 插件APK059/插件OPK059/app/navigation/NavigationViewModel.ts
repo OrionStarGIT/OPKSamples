@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import {
     BaseViewModel,
     ComponentEvent,
@@ -152,7 +153,7 @@ export class NavigationViewModel extends BaseViewModel {
             this.return_obj.text = "navigation action";
             this.return_obj.code = event && event.status
             let result = JSON.stringify(this.return_obj);
-            NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             console.log(TAG, "导航追踪" + JSON.stringify(event));
             switch (event.status) {
                 case ComponentResultConst.RESULT_NAVIGATION_ARRIVED:

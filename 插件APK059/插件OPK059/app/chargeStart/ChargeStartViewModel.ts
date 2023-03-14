@@ -24,6 +24,7 @@ import {
     NLPApkControl
 } from 'orionos-eve-core';
 import { ChargeStartModel } from './ChargeStartModel';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 
 const TAG = 'shadow_opk_for_android ChargeStartViewModel.ts';
 export class ChargeStartViewModel extends BaseViewModel {
@@ -148,7 +149,7 @@ export class ChargeStartViewModel extends BaseViewModel {
             this.return_obj.text = "charge action";
             this.return_obj.code = event && event.status
             let result = JSON.stringify(this.return_obj);
-            NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             console.log(TAG, "充电追踪" + JSON.stringify(event));
             switch (event.status) {
                 case ComponentResultConst.RESULT_NAVIGATION_ARRIVED:

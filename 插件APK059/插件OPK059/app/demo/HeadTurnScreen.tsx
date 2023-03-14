@@ -1,4 +1,4 @@
-import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Text, View, Button, DeviceEventEmitter} from 'react-native';
@@ -8,6 +8,7 @@ import { StandardFaceTrackViewModel } from '../standardFaceTrack/StandardFaceTra
 import { ChargeStartViewModel } from '../chargeStart/ChargeStartViewModel';
 import {MapViewModel} from '../map/MapViewModel';
 import { NavigationViewModel } from '../navigation/NavigationViewModel';
+import { PersonAppearViewModel } from '../personAppear/PersonAppearViewModel';
 import { HeadTurnVoice } from './HeadTurnVoice';
 import { HeadTurnTrigger } from './HeadTurnTrigger';
 import { HeadTurnView } from '../headTurn/HeadTurnView';
@@ -15,6 +16,8 @@ import { BasicMotionView } from '../basicMotion/BasicMotionView';
 import { StandardFaceTrackView } from '../standardFaceTrack/StandardFaceTrackView';
 import { ChargeStartView } from '../chargeStart/ChargeStartView';
 import { NavigationView } from '../navigation/NavigationView';
+import { PersonAppearView } from '../personAppear/PersonAppearView';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 
 //注册trigger跳转，必须添加，否则trigger无效
 triggerManager.addTrigger(new HeadTurnTrigger());
@@ -37,12 +40,13 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
     public cviewModel: ChargeStartViewModel;
     public mviewModel: MapViewModel;
     public nviewModel: NavigationViewModel;
+    public pviewModel: PersonAppearViewModel;
     private callback?: CommandListener;
     private return_obj = {"command": "", "text": "", "code": -1, "messaage": ""};
 
     public constructor(props: BaseComponentProps) {
         super(props);
-        global.recognition && global.recognition.setShow(false);
+        //global.recognition && global.recognition.setShow(false);
         this.nlpApkControlListener = new NLPApkControlListener();
         this.initListener();
         this.viewModel = new HeadTurnViewModel();
@@ -51,6 +55,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
         this.cviewModel = new ChargeStartViewModel();
         this.mviewModel = new MapViewModel();
         this.nviewModel = new NavigationViewModel();
+        this.pviewModel = new PersonAppearViewModel();
 
         let voice = new HeadTurnVoice(this.viewModel);
 
@@ -95,7 +100,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
         //重写界面的Unmount，必须调用super
         super.componentWillUnmount();
         let obj = {"intent": "stop"};
-        NLPApkControl.onRobotMessage('com.example.myfirstapp', JSON.stringify(obj));
+        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, JSON.stringify(obj));
     }
 
     private initListener = () => {
@@ -224,7 +229,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "bodyBack") {
                         console.log(
                             TAG,
@@ -250,7 +255,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "bodyLeft") {
                         console.log(
                             TAG,
@@ -276,7 +281,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "bodyRight") {
                         console.log(
                             TAG,
@@ -302,7 +307,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "bodyStop") {
                         console.log(
                             TAG,
@@ -322,7 +327,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "traceFace") {
                         console.log(
                             TAG,
@@ -351,7 +356,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             console.log("输出当前坐标信息：" + return_obj);
                             let result = JSON.stringify(return_obj);
                             console.log("输出当前坐标数据信息：" + result);
-                            NLPApkControl.onRobotMessage('com.example.myfirstapp',result);
+                            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME,result);
                         });
                     } else if (eventDataObj.command === "currentPosition") {
                         console.log(
@@ -363,7 +368,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             console.log("输出当前坐标信息(不包含站点列表数据信息)：" + return_obj);
                             let result = JSON.stringify(return_obj);
                             console.log("输出当前坐标数据信息（字符串，不包含站点列表数据信息）：" + result);
-                            NLPApkControl.onRobotMessage('com.example.myfirstapp',result);
+                            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME,result);
                         });
                     } else if (eventDataObj.command === "gotoMapSite") {
                         console.log(
@@ -392,7 +397,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = 1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "speechStop") {
                         console.log(
                             TAG,
@@ -405,7 +410,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = 1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "speechQuery") {
                         console.log(
                             TAG,
@@ -418,7 +423,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.text = eventDataObj.text;
                         this.return_obj.code = 1;
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "startCharge") {
                         console.log(
                             TAG,
@@ -442,13 +447,29 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         );
                         console.log("OPK页面跳转操作");
                         this.triggerToOpk(eventDataObj.jumpNum);
-                    } else if (eventDataObj.command === "exit") {
+                    } else if (eventDataObj.command === "startPersonAppear") {
                         console.log(
                             TAG,
                             '20:' + JSON.stringify(event)
                         );
+                        console.log("开始根据条件找人");
+                        this.viewModel.setHeadAction("personAppear");
+                        this.pviewModel.onPressStartPersonAppear();
+                    } else if (eventDataObj.command === "stopPersonAppear") {
+                        console.log(
+                            TAG,
+                            '21:' + JSON.stringify(event)
+                        );
+                        console.log("停止根据条件找人");
+                        this.pviewModel.onPressFinishPersonAppear();
+                        this.viewModel.setHeadAction("exit");
+                    } else if (eventDataObj.command === "exit") {
+                        console.log(
+                            TAG,
+                            '22:' + JSON.stringify(event)
+                        );
                         console.log("退出操作");
-                        //NLPApkControl.forceStopPackage("com.example.myfirstapp");
+                        //NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);
                         this.goHome(this.viewModel.getTriggerNum());
                     }
                     
@@ -512,7 +533,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                     TAG,
                     'EVENT_ON_PROCESS_INVISIBLE:' + JSON.stringify(event)
                 );
-                NLPApkControl.forceStopPackage("com.example.myfirstapp");
+                NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);
                 this.goHome(this.viewModel.getTriggerNum());
             }
         );
@@ -544,12 +565,12 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                 );
                 let params_to_apk = this.props.navigation.state.params.result;
                 let re_result = JSON.stringify(params_to_apk);
-                NLPApkControl.onRobotMessage('com.example.myfirstapp', re_result);
+                NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, re_result);
             }
         );
 
         NLPApkControl.addListener(
-            'com.example.myfirstapp',
+            ThirdApkInfo.PACKAGE_NAME,
             this.nlpApkControlListener.getId()
         );
     }
@@ -560,12 +581,12 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
         //DeviceEventEmitter.emit("wakeup", "跳转到wakeUp页面信息");
         //this.nlpApkControlListener &&this.nlpApkControlListener.removeListener();
         console.log(TAG, '跳转到wakeUp页面1');
-        //NLPApkControl.forceStopPackage("com.example.myfirstapp");
+        //NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);
         this.return_obj.command = "shutDownAPP"+jumpNum;
         this.return_obj.text = "need close the running's app";
         this.return_obj.code = 1;
         let result = JSON.stringify(this.return_obj);
-        NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
         console.log(TAG, '跳转到wakeUp页面2');
         //this.viewModel.triggerToOpk();
     }
@@ -581,6 +602,22 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
     public render() {
         console.log('进入到了render方法' + "     getHeadAction方法获取的内容=====：" + this.viewModel.getHeadAction());
         if (this.viewModel.getHeadAction() == "") {
+            // if (!this.pviewModel) {
+            //     return null;
+            // }
+            // console.log("人脸识别 render方法");
+            // return (
+            //     <>
+            //         {/*人脸识别*/}
+            //         {this.pviewModel.isRunning() ? (
+            //             <PersonAppearComponent
+            //                 param={this.pviewModel.getParam()}
+            //                 onFinish={this.pviewModel && this.pviewModel.onFinish}/>
+            //         ) : <View><Text>进入到了else的方法里面</Text></View>}
+            //         {/*界面*/}
+            //         <PersonAppearView viewModel={this.pviewModel}/>
+            //     </>
+            // );
             // if (!this.nviewModel) {
             //     return null;
             // }
@@ -693,6 +730,24 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                     <NavigationView viewModel={this.nviewModel}/>
                 </>
             );
+        } else if (this.viewModel.getHeadAction() == "personAppear") {
+            if (!this.pviewModel) {
+                return null;
+            }
+            console.log("人脸识别 render方法");
+            return (
+                <>
+                    {/*人脸识别*/}
+                    {this.pviewModel.isRunning() ? (
+                        <PersonAppearComponent
+                            param={this.pviewModel.getParam()}
+                            onFinish={this.pviewModel && this.pviewModel.onFinish}/>
+                    ) : <View><Text>进入到了personAppear的else的方法里面</Text></View>}
+                    {/*界面*/}
+                    <PersonAppearView viewModel={this.pviewModel}/>
+                </>
+            );
+
         } else if (this.viewModel.getHeadAction() == "exit") {
             console.log("进入到了render的null里面");
             // return(            

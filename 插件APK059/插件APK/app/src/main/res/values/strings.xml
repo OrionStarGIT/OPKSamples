@@ -41,6 +41,10 @@
     <string name="vision_warning">Click button , than the screen will tracking your face. </string>
     <string name="vision_warning2">No api to delete person at the moment</string>
 
+    <string name="person_appear">Start Person Appear</string>
+    <string name="stop_person_appear">Stop Person Appear</string>
+    <string name="person_appear_warning">Click button , than the screen will enable personnel detection. </string>
+
     <string name="location_reception">Is in reception point?</string>
     <string name="location_init_point">Init Position</string>
     <string name="location_is_estimate">Is estimate</string>

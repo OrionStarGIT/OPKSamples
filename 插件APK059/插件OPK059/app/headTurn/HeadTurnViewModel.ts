@@ -28,6 +28,7 @@ import {
 } from 'orionos-eve-core';
 import { HeadTurnModel } from './HeadTurnModel';
 import { BasicMotionModel } from '../basicMotion/BasicMotionModel';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 
 const TAG = 'shadow_opk_for_android HeadTurnViewModel.ts';
 export class HeadTurnViewModel extends BaseViewModel {
@@ -147,7 +148,7 @@ export class HeadTurnViewModel extends BaseViewModel {
             this.return_obj.text = "head action";
             this.return_obj.code = event && event.status
             let result = JSON.stringify(this.return_obj);
-            NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             console.log(TAG, "人脸追踪" + JSON.stringify(event));
             switch (event.status) {
                 case ComponentResultConst.RESULT_HEAD_TURN_SUCCESS:
@@ -210,16 +211,16 @@ export class HeadTurnViewModel extends BaseViewModel {
 
     public conDoctor = (obj: any): boolean => {
         //打开shadow_apk
-        IntentLauncher.isAppInstalled('com.example.myfirstapp')
+        IntentLauncher.isAppInstalled(ThirdApkInfo.PACKAGE_NAME)
             .then((result: any) => {
                 OpenAppApi.openThirdPartyAppIfKillRnForResult(
-                    'com.example.myfirstapp',
-                    'com.example.myfirstapp.MainActivity',
+                    ThirdApkInfo.PACKAGE_NAME,
+                    ThirdApkInfo.MAIN_ACTIVITY,
                     false
                 ).then(() => {
                     // let re_result = JSON.stringify(obj);
                     // console.log("打开APK后发送语音指令数据信息：" + re_result);
-                    // NLPApkControl.onRobotMessage('com.example.myfirstapp',re_result);
+                    // NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME,re_result);
                 });
             })
             .catch((error: any) => {

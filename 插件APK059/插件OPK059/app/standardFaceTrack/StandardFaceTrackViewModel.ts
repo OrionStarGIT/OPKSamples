@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import {
     BaseViewModel,
     ComponentEvent,
@@ -100,7 +101,7 @@ export class StandardFaceTrackViewModel extends BaseViewModel {
             this.return_obj.text = "face action";
             this.return_obj.code = event.status;
             let result = JSON.stringify(this.return_obj);
-            NLPApkControl.onRobotMessage('com.example.myfirstapp', result);
+            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             switch (event.status) {
                 case ComponentResultConst.RESULT_TIMEOUT:
                     this.mModel.appendResultText(

@@ -1,3 +1,4 @@
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { BaseVoice, NLPApkControl } from 'orionos-eve-core';
 import { HeadTurnViewModel } from '../headTurn/HeadTurnViewModel';
 
@@ -39,7 +40,7 @@ export class HeadTurnVoice extends BaseVoice {
                 this.return_obj.result = result;
                 let result_str = JSON.stringify(this.return_obj);
                 console.log("语音识别数据信息：" + result_str);
-                NLPApkControl.onRobotMessage('com.example.myfirstapp',result_str);
+                NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME,result_str);
                 //this.viewModel.showSpeechText(`${intent} : ${text}`);
                 return true;
         }

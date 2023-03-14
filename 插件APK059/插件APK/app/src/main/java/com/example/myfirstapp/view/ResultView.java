@@ -35,7 +35,7 @@ public class ResultView extends LinearLayout {
     private Button mClear_result;
     private Button mRecovery_result;
     private ScrollView mSc_result;
-    private TextView mTv_result;
+    public static TextView mTv_result;
     public ResultView(Context context) {
         super(context);
         init(context);

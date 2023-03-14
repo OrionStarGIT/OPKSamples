@@ -143,7 +143,7 @@ public class MainFragment extends BaseFragment {
         mVision_scene.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchFragment(VisionFragment.newInstance());
+                switchFragment(PersonAppearFragment.newInstance());
             }
         });
 
