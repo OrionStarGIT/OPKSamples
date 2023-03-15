@@ -13,8 +13,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import {
     BaseViewModel,
     ComponentEvent,
@@ -23,6 +21,7 @@ import {
     PersonAppearParam,
     NLPApkControl
 } from 'orionos-eve-core';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { PersonAppearModel } from './PersonAppearModel';
 
 const TAG = 'shadow_opk_for_android personAppearViewModel.ts';

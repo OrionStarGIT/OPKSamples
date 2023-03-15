@@ -1,5 +1,5 @@
-import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { BaseVoice, NLPApkControl } from 'orionos-eve-core';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { HeadTurnViewModel } from '../headTurn/HeadTurnViewModel';
 
 /**

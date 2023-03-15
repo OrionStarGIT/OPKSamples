@@ -13,8 +13,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import {
     BaseViewModel,
     ComponentEvent,
@@ -24,6 +22,7 @@ import {
     StandardFaceTrackParam,
     NLPApkControl
 } from 'orionos-eve-core';
+import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { StandardFaceTrackModel } from './StandardFaceTrackModel';
 
 export class StandardFaceTrackViewModel extends BaseViewModel {
