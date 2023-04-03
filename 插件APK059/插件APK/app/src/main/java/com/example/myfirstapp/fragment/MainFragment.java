@@ -47,6 +47,7 @@ public class MainFragment extends BaseFragment {
     private Button mAsr_tts;
     private Button mNavigation_scene;
     private Button mTrigger_scene;
+    private Button mRobotInfo_scene;
     private Button mExit;
     private Context mContext;
 
@@ -86,6 +87,7 @@ public class MainFragment extends BaseFragment {
         mAsr_tts = (Button) root.findViewById(R.id.asr_tts);
         mNavigation_scene = (Button) root.findViewById(R.id.navigation_scene);
         mTrigger_scene = (Button) root.findViewById(R.id.click_to_trigger);
+        mRobotInfo_scene = (Button) root.findViewById(R.id.robot_info);
         mExit = (Button) root.findViewById(R.id.exit);
         mExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +175,13 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 switchFragment(TriggerFragment.newInstance());
+            }
+        });
+
+        mRobotInfo_scene.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchFragment(RobotInfoFragment.newInstance());
             }
         });
     }

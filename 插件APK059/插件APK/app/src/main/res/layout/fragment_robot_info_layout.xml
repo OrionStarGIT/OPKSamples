@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/get_robot_sn"
+        style="@style/TextStyle"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/get_robot_sn" />
+
+</LinearLayout>

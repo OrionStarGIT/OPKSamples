@@ -1,4 +1,4 @@
-import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Text, View, Button, DeviceEventEmitter} from 'react-native';
@@ -42,7 +42,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
     public nviewModel: NavigationViewModel;
     public pviewModel: PersonAppearViewModel;
     private callback?: CommandListener;
-    private return_obj = {"command": "", "text": "", "code": -1, "messaage": ""};
+    private return_obj = {"command": "", "text": "", "code": -1, "message": ""};
 
     public constructor(props: BaseComponentProps) {
         super(props);
@@ -463,10 +463,22 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         console.log("停止根据条件找人");
                         this.pviewModel.onPressFinishPersonAppear();
                         this.viewModel.setHeadAction("exit");
-                    } else if (eventDataObj.command === "exit") {
+                    } else if (eventDataObj.command === "getRobotSn") {
                         console.log(
                             TAG,
                             '22:' + JSON.stringify(event)
+                        );
+                        console.log("获取机器人SN信息");
+                        this.return_obj.command = eventDataObj.command;
+                        this.return_obj.text = eventDataObj.text;
+                        this.return_obj.code = this.callback ? this.callback.getId() : -1;
+                        this.return_obj.message = String(SystemInfo.getDeviceSn());
+                        let result = JSON.stringify(this.return_obj);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);                        
+                    } else if (eventDataObj.command === "exit") {
+                        console.log(
+                            TAG,
+                            '23:' + JSON.stringify(event)
                         );
                         console.log("退出操作");
                         //NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);

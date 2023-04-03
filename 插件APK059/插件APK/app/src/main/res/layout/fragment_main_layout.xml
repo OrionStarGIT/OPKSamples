@@ -138,6 +138,18 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/click_to_trigger"
                 android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/robot_info"
+                android:layout_width="60dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/robot_info"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 

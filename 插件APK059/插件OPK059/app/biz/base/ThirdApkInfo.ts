@@ -17,6 +17,11 @@
 export enum ThirdApkInfo {
     PACKAGE_NAME = 'com.example.myfirstapp',
     MAIN_ACTIVITY = 'com.example.myfirstapp.MainActivity',
+    //MAIN_ACTIVITY = 'com.haiheng.orionrobot.MainActivity',  //海恒客户
+    // PACKAGE_NAME = 'mr.c0037.inspection',
+    // MAIN_ACTIVITY = 'mr.c0037.inspection.ActivityStartup',
+    
+
 }
 
 export const ThirdApkInfoLocal = ThirdApkInfo;
