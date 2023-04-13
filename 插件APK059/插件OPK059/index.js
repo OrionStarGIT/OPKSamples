@@ -18,6 +18,7 @@ AppRegistry.registerConfig([{
     intent: 'demonstrate_app&open', //例如:'weather&get_weather'
     //intent: ['smart_library&select_book', 'smart_library&onsultation_guide', 'smart_library&return_book', 'smart_library&borrow_book', 'smart_library&recommended_book', 'smart_library&find_book', 'smart_library&portuguese_guide'], //例如:'海恒客户'
     //intent: 'myyangji_open&open', //例如:'weather&get_weather'
+    // intent: 'open_apk&open_shangshu_show', //例如:'汇智机器人远程医疗'
     appId: appid,
     priority: 1
 }]);

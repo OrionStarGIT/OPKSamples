@@ -13,4 +13,12 @@
         android:layout_marginLeft="8dp"
         android:text="@string/get_robot_sn" />
 
+    <Button
+        android:id="@+id/set_angle_center_range"
+        style="@style/TextStyle"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/set_angle_center_range" />
+
 </LinearLayout>

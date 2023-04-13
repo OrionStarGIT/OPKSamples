@@ -474,11 +474,26 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         this.return_obj.message = String(SystemInfo.getDeviceSn());
                         let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);                        
-                    } else if (eventDataObj.command === "exit") {
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
+
+                    } else if (eventDataObj.command === "setVoiceRecognitionArea") {
                         console.log(
                             TAG,
                             '23:' + JSON.stringify(event)
+                        );
+                        speechApi.setAngleCenterRange(eventDataObj.centerAngle, eventDataObj.rangeAngle);
+                        console.log("设置声音识别区域");
+                        this.return_obj.command = eventDataObj.command;
+                        this.return_obj.text = eventDataObj.text;
+                        this.return_obj.code = 1;
+                        this.return_obj.message = "设置声音识别区域";
+                        let result = JSON.stringify(this.return_obj);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);                           
+                        
+                    } else if (eventDataObj.command === "exit") {
+                        console.log(
+                            TAG,
+                            '24:' + JSON.stringify(event)
                         );
                         console.log("退出操作");
                         //NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);
@@ -649,6 +664,14 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             // return(            
             //     <View>
             //         <Button title={"跳转到大眼睛页面"} onPress={this.triggerToOpk}/>
+            //     </View>  
+            // );
+            // console.log('设置动态拾音角度 开始....');
+            // speechApi.setAngleCenterRange(60.0, 60.0);
+            // console.log('设置动态拾音角度 结束....');
+            // return(            
+            //     <View>
+            //         <Text  style={{ fontSize: 17, color: 'red' }}>设置机器人拾音角度</Text>
             //     </View>  
             // );
             let params_to_apk = this.props.navigation.state.params.result;

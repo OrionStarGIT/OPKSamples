@@ -85,6 +85,7 @@
 
     <string name="robot_info">ROBOT INFO</string>
     <string name="get_robot_sn">GET ROBOT SN</string>
+    <string name="set_angle_center_range">SET ANGLE CENTER RANGE(359,120)</string>
 
 
 </resources>

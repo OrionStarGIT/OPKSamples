@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 public class RobotInfoFragment extends BaseFragment {
     private Button mGetRobotSnTrigger;
+    private Button mSetAngleCenterRange;
     private Context mContext;
 
     @Override
@@ -48,6 +49,7 @@ public class RobotInfoFragment extends BaseFragment {
 
     private void initViews(View root) {
         mGetRobotSnTrigger = (Button) root.findViewById(R.id.get_robot_sn);
+        mSetAngleCenterRange = (Button) root.findViewById(R.id.set_angle_center_range);
 
         mGetRobotSnTrigger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,33 @@ public class RobotInfoFragment extends BaseFragment {
                     JSONObject json = new JSONObject();
                     json.put("command", "getRobotSn");
                     json.put("text", "get the robot sn");
+                    RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
+                    MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
+                        @Override
+                        public void onResult(String result) {
+                            Log.i("SHADOW_OPK", "收取callback内容getRobotSnListener: " + result);
+                        }
+                    });
+                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        mSetAngleCenterRange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    /**
+                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     */
+                    Log.i("关键点", "设置语音识别区域");
+                    JSONObject json = new JSONObject();
+                    json.put("command", "setVoiceRecognitionArea");
+                    json.put("centerAngle", 359.0);
+                    json.put("rangeAngle", 120.0);
+                    json.put("text", "set angle center range");
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
                     MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
                         @Override

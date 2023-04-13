@@ -20,6 +20,8 @@ export enum ThirdApkInfo {
     //MAIN_ACTIVITY = 'com.haiheng.orionrobot.MainActivity',  //海恒客户
     // PACKAGE_NAME = 'mr.c0037.inspection',
     // MAIN_ACTIVITY = 'mr.c0037.inspection.ActivityStartup',
+    // PACKAGE_NAME = 'com.bx.shangshu', //汇智机器人
+    // MAIN_ACTIVITY = 'com.bx.shangshu.activity.MainActivity',
     
 
 }
