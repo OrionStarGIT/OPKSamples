@@ -58,6 +58,16 @@ public class PersonAppearFragment extends BaseFragment {
                      */
                     JSONObject json = new JSONObject();
                     json.put("command", "startPersonAppear");
+                    json.put("personId", -1);
+                    json.put("personName", "");
+                    json.put("maxDistance", 3);
+                    json.put("maxFaceAngleX", 60);
+                    json.put("isNeedInCompleteFace", false);
+                    json.put("incompleteFaceCacheTimeout", 3000);
+                    json.put("isNeedBody", false);
+                    json.put("isNeedRecognize", true);
+                    json.put("recognizeTimeout", 2000);
+                    json.put("appearTimeout", 7000);
                     json.put("text", "Enable personnel detection");
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
                     //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);

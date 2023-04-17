@@ -39,6 +39,26 @@ export class PersonAppearModel {
     }
 
     /**
+     * 依据条件开始识别
+     */
+    @action
+    public startPersonAppearCondition(personId: number, personName: string, maxDistance: number, maxFaceAngleX: number, isNeedInCompleteFace: boolean, incompleteFaceCacheTimeout: number, isNeedBody: boolean, isNeedRecognize: boolean, recognizeTimeout: number, appearTimeout: number): void {
+        this.mPersonAppearParam.personId = personId;
+        this.mPersonAppearParam.personName = personName;
+        this.mPersonAppearParam.maxDistance = maxDistance;
+        this.mPersonAppearParam.maxFaceAngleX = maxFaceAngleX;
+        this.mPersonAppearParam.isNeedInCompleteFace = isNeedInCompleteFace;
+        this.mPersonAppearParam.incompleteFaceCacheTimeout = incompleteFaceCacheTimeout;
+        this.mPersonAppearParam.isNeedBody = isNeedBody;
+        this.mPersonAppearParam.isNeedRecognize = isNeedRecognize;
+        this.mPersonAppearParam.recognizeTimeout = recognizeTimeout;
+        this.mPersonAppearParam.isNeedDeletePic = true;
+        this.mPersonAppearParam.appearTimeout = appearTimeout;
+        this.mPersonAppearParam.scene = undefined;
+        this.mIsRunning = true;
+    }
+
+    /**
      * 开始识别
      */
     @action

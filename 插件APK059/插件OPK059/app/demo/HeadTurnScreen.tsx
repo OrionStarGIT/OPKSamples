@@ -454,7 +454,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         );
                         console.log("开始根据条件找人");
                         this.viewModel.setHeadAction("personAppear");
-                        this.pviewModel.onPressStartPersonAppear();
+                        this.pviewModel.startPersonAppearCondition(eventDataObj.personId, eventDataObj.personName, eventDataObj.maxDistance, eventDataObj.maxFaceAngleX, eventDataObj.isNeedInCompleteFace, eventDataObj.incompleteFaceCacheTimeout, eventDataObj.isNeedBody, eventDataObj.isNeedRecognize, eventDataObj.recognizeTimeout, eventDataObj.appearTimeout);
                     } else if (eventDataObj.command === "stopPersonAppear") {
                         console.log(
                             TAG,
