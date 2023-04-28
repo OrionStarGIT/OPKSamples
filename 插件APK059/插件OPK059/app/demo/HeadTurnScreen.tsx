@@ -1,4 +1,4 @@
-import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo, AppManager } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Text, View, Button, DeviceEventEmitter} from 'react-native';
@@ -676,7 +676,17 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             // );
             let params_to_apk = this.props.navigation.state.params.result;
             this.viewModel.conDoctor(params_to_apk);
-            return(null);
+            let appid = AppManager.getAppId();
+            console.log('========================' + appid);
+            return(            
+                <View style={{ width: '100%', height: '100%' , alignItems:'center', justifyContent:'center', backgroundColor:'grey'}}>
+                    <Text>插件APK启动参数为：</Text>
+                    {/* <Text>APPID：{appid}</Text> */}
+                    <Text>PackageName：{ThirdApkInfo.PACKAGE_NAME}</Text>
+                    <Text>ActivityName：{ThirdApkInfo.MAIN_ACTIVITY}</Text>
+                    <Text>请检查对应apk是否安装，包名和activity名是否正确，并确保apk没有在后台运行。</Text>
+                </View>  
+            );
         } else if (this.viewModel.getHeadAction() == "head") {
             if (!this.viewModel) {
                 return null;
