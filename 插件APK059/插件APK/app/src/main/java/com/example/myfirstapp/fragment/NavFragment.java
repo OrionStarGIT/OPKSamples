@@ -14,12 +14,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-//import com.ainirobot.coreservice.client.Definition;
-//import com.ainirobot.coreservice.client.RobotApi;
-//import com.ainirobot.coreservice.client.StatusListener;
-//import com.ainirobot.coreservice.client.actionbean.PlaceBean;
-//import com.ainirobot.coreservice.client.listener.ActionListener;
-//import com.ainirobot.coreservice.client.listener.CommandListener;
 import com.ainirobot.lib.shadowopk.RobotMessengerManager;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
@@ -27,7 +21,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.myfirstapp.MainActivity;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.application.MRobotMessenger;
-import com.example.myfirstapp.maputils.Constant;
 import com.example.myfirstapp.maputils.DialogConfirm;
 import com.example.myfirstapp.maputils.DialogUtils;
 import com.example.myfirstapp.maputils.GlobalData;
@@ -35,9 +28,7 @@ import com.example.myfirstapp.maputils.MapppUtils;
 import com.example.myfirstapp.maputils.Pose2d;
 import com.example.myfirstapp.maputils.PoseBean;
 import com.example.myfirstapp.maputils.RoverMap;
-import com.example.myfirstapp.maputils.SpecialPlaceUtil;
 import com.example.myfirstapp.view.MapView;
-import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,7 +88,6 @@ public class NavFragment extends Fragment {
 
                 }
             });
-            //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -146,7 +136,6 @@ public class NavFragment extends Fragment {
 
                 }
             });
-            //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -158,20 +147,6 @@ public class NavFragment extends Fragment {
     private void initView(View root) {
         mMapView = root.findViewById(R.id.map_view);
         mBackView = root.findViewById(R.id.edit_back);
-        /*
-         * 获得当前地图名
-         * Get the current map name
-         * */
-/*        RobotApi.getInstance().getMapName(0, new CommandListener() {
-            @Override
-            public void onResult(int result, String message, String extraData) {
-                super.onResult(result, message, extraData);
-                if (!TextUtils.isEmpty(message)) {
-                    //message为地图名称
-                    getMap(message);
-                }
-            }
-        });*/
 
         mBackView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,19 +187,6 @@ public class NavFragment extends Fragment {
             }
             GlobalData.getInstance().setEditMapData(mMapView, this.mRoverMap);
 
-            /*
-             * setOrigin
-             * 设置机器人当前位置
-             * Set the current position of the robot
-             * */
-/*            String poseStr = jsonObj.getString("pose");
-            Log.i("SHADOW_OPK", "设置当前坐标数据: " + poseStr);
-            JSONObject poseObject = JSON.parseObject(poseStr);
-            mMapView.setOrigin(MapppUtils.pose2PixelByRoverMap(this.mRoverMap, new Pose2d(poseObject.getDouble("px"),
-                    poseObject.getDouble("py"),
-                    poseObject.getDouble("theta"),
-                    0)));*/
-
             this.addCurrentPositionListener();
 
             /*
@@ -254,50 +216,6 @@ public class NavFragment extends Fragment {
             mMapView.setPoseBeans(poseBeans);
             GlobalData.getInstance().setPoseBeanList(poseBeans, true);
         }
-
-        /*
-         * getInternationalPlaceList
-         * 获取地图位置点
-         * Get map location point
-         * */
-/*        List<PoseBean> poseBeans = new ArrayList<>();
-        try {
-            Gson gson = new Gson();
-            List<PlaceBean> placeBeanList = gson.fromJson(message, new TypeToken<List<PlaceBean>>() {
-            }.getType());
-            for (PlaceBean placeBean : placeBeanList) {
-                if (SpecialPlaceUtil.isChargingPoint(placeBean) ||
-                        (RobotApi.getInstance().isChargePileExits() &&
-                                SpecialPlaceUtil.isNavigatorPoint(
-                                        Constant.NavigatorPoint.POINT2,
-                                        placeBean))) {
-                    continue;
-                }
-                String placename = placeBean.getPlaceName();
-                if (null != placename) {
-                    poseBeans.add(new PoseBean(placename,
-                            MapppUtils.pose2PixelByRoverMap(mRoverMap
-                                    , new Pose2d(placeBean.getPointX(),
-                                            placeBean.getPointY(),
-                                            placeBean.getPointTheta(),
-                                            placeBean.getPlaceStatus()))));
-                }
-
-                *//*
-                 * setOrigin
-                 * 设置机器人当前位置
-                 * Set the current position of the robot
-                 * *//*
-                mMapView.setOrigin(MapppUtils.pose2PixelByRoverMap(mRoverMap, new Pose2d(placeBean.getPointX(),
-                        placeBean.getPointY(),
-                        placeBean.getPointTheta(),
-                        placeBean.getPlaceStatus())));
-            }
-            mMapView.setPoseBeans(poseBeans);
-            GlobalData.getInstance().setPoseBeanList(poseBeans, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
     /*
@@ -351,7 +269,6 @@ public class NavFragment extends Fragment {
         json.put("text", placeName);
         json.put("params", params);
         RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-        //RobotApi.getInstance().startNavigation(0, placeName, 1.5, 10 * 1000, mNavigationListener);
     }
 
     /**
@@ -366,7 +283,6 @@ public class NavFragment extends Fragment {
         map.put("command", "stopMapSite");
         map.put("text", "stop goto the map site");
         RobotMessengerManager.INSTANCE.triggerCommand(JSON.toJSONString(map));
-        //RobotApi.getInstance().stopNavigation(0);
     }
 
     private boolean isCurrentMap() {
@@ -378,131 +294,21 @@ public class NavFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (isCurrentMap()) {
-/*            RobotApi.getInstance().registerStatusListener(
-                    Constant.CoreDef.POSE_LISTEN, mStatusPoseListener);
-
-            mIsEstimate = RobotApi.getInstance().isRobotEstimate();
-            RobotApi.getInstance().registerStatusListener(
-                    Definition.STATUS_POSE_ESTIMATE, mEstimateStateListen);*/
         }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        //RobotApi.getInstance().unregisterStatusListener(mStatusPoseListener);
-        //RobotApi.getInstance().unregisterStatusListener(mEstimateStateListen);
     }
-
-    /*private StatusListener mStatusPoseListener = new StatusListener() {
-        long preTime = System.currentTimeMillis();
-
-        @Override
-        public void onStatusUpdate(String type, String value) {
-            Pose2d pose2d = GsonUtil.fromJson(value, Pose2d.class);
-            long curTime = System.currentTimeMillis();
-            if (curTime - preTime > 2500) {
-                preTime = curTime;
-                Log.d(TAG, "onStatusUpdate. " + pose2d);
-            }
-            GlobalData.getInstance().setNewestLocation(pose2d);
-            onMapPose2d(pose2d);
-        }
-    };*/
 
     private void onMapPose2d(final Pose2d pose2d) {
         if (null != mRoverMap) {
             if (mIsEstimate) {
                 mMapView.setOrigin(MapppUtils.pose2PixelByRoverMap(mRoverMap, pose2d));
-//                mMapView.setResolution(mRoverMap.res);
             }
         }
     }
-
-    /*private StatusListener mEstimateStateListen = new StatusListener() {
-        @Override
-        public void onStatusUpdate(String type, final String data) {
-            Log.d(TAG, "onStatusUpdate type = " + type + ", data = " + data);
-            try {
-                JSONObject jsonObject = new JSONObject(data);
-                mIsEstimate = jsonObject.optBoolean("isPoseEstimate", false);
-            } catch (Exception e) {
-                mIsEstimate = false;
-            }
-            if (!mIsEstimate) {
-                mMapView.setOrigin(null);
-            }
-        }
-    };
-
-    private static ActionListener mNavigationListener = new ActionListener() {
-
-        @Override
-        public void onResult(int status, String response) throws RemoteException {
-
-            switch (status) {
-                case Definition.RESULT_OK:
-                    if ("true".equals(response)) {
-                        LogTools.info("startNavigation result: " + status + "(Navigation success)" + " message: " + response);
-                        LogTools.info("startNavigation result: " + status + "(导航成功)" + " message: " + response);
-                    } else {
-                        LogTools.info("startNavigation result: " + status + "(Navigation failed)" + " message: " + response);
-                        LogTools.info("startNavigation result: " + status + "(导航失败)" + " message: " + response);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onError(int errorCode, String errorString) throws RemoteException {
-            switch (errorCode) {
-                case Definition.ERROR_NOT_ESTIMATE:
-                    LogTools.info("onError result: " + errorCode + "(not estimate)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(当前未定位)" + " message: " + errorString);
-                    break;
-                case Definition.ERROR_IN_DESTINATION:
-                    LogTools.info("onError result: " + errorCode + "(in destination, no action)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(当前机器人已经在目的地范围内)" + " message: " + errorString);
-                    break;
-                case Definition.ERROR_DESTINATION_NOT_EXIST:
-                    LogTools.info("onError result: " + errorCode + "(destination not exist)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(导航目的地不存在)" + " message: " + errorString);
-                    break;
-                case Definition.ERROR_DESTINATION_CAN_NOT_ARRAIVE:
-                    LogTools.info("onError result: " + errorCode + "(avoid timeout, can not arrive)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(避障超时，目的地不能到达，超时时间通过参数设置)" + " message: " + errorString);
-                    break;
-                case Definition.ACTION_RESPONSE_ALREADY_RUN:
-                    LogTools.info("onError result: " + errorCode + "(already started, please stop first)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(当前接口已经调用，请先停止，才能再次调用)" + " message: " + errorString);
-                    break;
-                case Definition.ACTION_RESPONSE_REQUEST_RES_ERROR:
-                    LogTools.info("onError result: " + errorCode + "(wheels are busy for other actions, please stop first)" + " message: " + errorString);
-                    LogTools.info("onError result: " + errorCode + "(已经有需要控制底盘的接口调用，请先停止，才能继续调用)" + " message: " + errorString);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onStatusUpdate(int status, String data) throws RemoteException {
-            switch (status) {
-                case Definition.STATUS_NAVI_AVOID:
-                    LogTools.info("onStatusUpdate result: " + status + "(can not avoid obstacles)" + " message: " + data);
-                    LogTools.info("onStatusUpdate result: " + status + "(当前路线已经被障碍物堵死)" + " message: " + data);
-                    break;
-                case Definition.STATUS_NAVI_AVOID_END:
-                    LogTools.info("onStatusUpdate result: " + status + "(Obstacle removed)" + " message: " + data);
-                    LogTools.info("onStatusUpdate result: " + status + "(障碍物已移除)" + " message: " + data);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };*/
 
     public static Fragment newInstance() {
         return new com.example.myfirstapp.fragment.NavFragment();

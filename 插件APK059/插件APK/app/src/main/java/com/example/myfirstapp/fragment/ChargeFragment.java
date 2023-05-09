@@ -17,19 +17,13 @@
 package com.example.myfirstapp.fragment;
 
 import android.content.Context;
-import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-//import com.ainirobot.coreservice.client.Definition;
-//import com.ainirobot.coreservice.client.RobotApi;
-//import com.ainirobot.coreservice.client.listener.ActionListener;
-//import com.ainirobot.coreservice.client.listener.CommandListener;
 import com.ainirobot.lib.shadowopk.RobotMessengerManager;
-import com.example.myfirstapp.LogTools;
 import com.example.myfirstapp.R;
 
 import org.json.JSONException;
@@ -93,67 +87,6 @@ public class ChargeFragment extends BaseFragment {
         });
 
     }
-
-    /**
-     * 停止充电并脱离充电桩
-     */
-    /*private void stopChargingByApp() {
-        LogTools.info("停止充电并脱离充电桩");
-        //RobotApi.getInstance().stopChargingByApp();
-        RobotApi.getInstance().leaveChargingPile(0,0.5f,0.5f,new CommandListener() {
-            @Override
-            public void onResult(int result, String message) {
-                LogTools.info("result: " + result + " message: "+ message);
-            }
-        });
-    }*/
-
-/*    private ActionListener mActionListener = new ActionListener() {
-
-        @Override
-        public void onResult(int status, String responseString) throws RemoteException {
-            switch (status) {
-                case Definition.RESULT_OK:
-                    LogTools.info("onResult result: " + status +"(充电成功)"+ " message: "+  responseString);
-                    break;
-
-                case Definition.RESULT_FAILURE:
-                    LogTools.info("onResult result: " + status +"(充电失败)"+ " message: "+  responseString);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onStatusUpdate(int status, String data) throws RemoteException {
-            switch (status) {
-                case Definition.STATUS_NAVI_GLOBAL_PATH_FAILED:
-                    LogTools.info("onStatusUpdate result: " + status +"(全局路径规划失败)"+ " message: "+  data);
-                    break;
-
-                case Definition.STATUS_NAVI_OUT_MAP:
-                    LogTools.info("onStatusUpdate result: " + status +"(目标点不能到达，引领目的地在地图外，有可能为地图与位置点不匹配，请重新设置位置点)"+ " message: "+  data);
-                    break;
-
-                case Definition.STATUS_NAVI_AVOID:
-                    LogTools.info("onStatusUpdate result: " + status +"(前往回充点路线已被障碍物堵死)"+ " message: "+  data);
-                    break;
-
-                case Definition.STATUS_NAVI_AVOID_END:
-                    LogTools.info("onStatusUpdate result: " + status +"(障碍物已移除)"+ " message: "+  data);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        @Override
-        public void onError(int errorCode, String errorString, String extraData) throws RemoteException {
-            super.onError(errorCode, errorString, extraData);
-            LogTools.info("onError result: " + errorCode +"(充电回充失败)"+ " message: "+  errorString);
-        }
-    };*/
 
     public static Fragment newInstance() {
         return new com.example.myfirstapp.fragment.ChargeFragment();

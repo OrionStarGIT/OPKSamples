@@ -84,7 +84,6 @@ public class SportFragment extends BaseFragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //RobotApi.getInstance().goForward(0, 0.02f, mMotionListener);
             }
         });
 
@@ -104,35 +103,31 @@ public class SportFragment extends BaseFragment {
                     json.put("text", "body back");
                     json.put("params", params);
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //RobotApi.getInstance().goBackward(0, 0.02f, mMotionListener);
             }
         });
 
         mTurn_left.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                try {
-                /**
-                 * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
-                 */
-                JSONObject params = new JSONObject();
-                params.put("lineSpeed", 0);
-                params.put("angularSpeed", 0.1);
+            public void onClick(View v) {
+                try {
+                    /**
+                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     */
+                    JSONObject params = new JSONObject();
+                    params.put("lineSpeed", 0);
+                    params.put("angularSpeed", 0.1);
 
-                JSONObject json = new JSONObject();
-                json.put("command", "bodyLeft");
-                json.put("text", "body left");
-                json.put("params", params);
-                RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-                //RobotApi.getInstance().turnLeft(0, 0.2f, mMotionListener);
+                    JSONObject json = new JSONObject();
+                    json.put("command", "bodyLeft");
+                    json.put("text", "body left");
+                    json.put("params", params);
+                    RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -156,7 +151,6 @@ public class SportFragment extends BaseFragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //RobotApi.getInstance().turnRight(0, 0.2f, mMotionListener);
             }
         });
 
@@ -171,11 +165,9 @@ public class SportFragment extends BaseFragment {
                     json.put("command", "bodyStop");
                     json.put("text", "body stop");
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //RobotApi.getInstance().stopMove(0, mMotionListener);
             }
         });
 
@@ -197,7 +189,6 @@ public class SportFragment extends BaseFragment {
                     json.put("text", "head up");
                     json.put("params", params);
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -221,7 +212,6 @@ public class SportFragment extends BaseFragment {
                     json.put("text", "head down");
                     json.put("params", params);
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, 10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -245,7 +235,6 @@ public class SportFragment extends BaseFragment {
                     json.put("text", "head left");
                     json.put("params", params);
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", -10, 0, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -269,23 +258,12 @@ public class SportFragment extends BaseFragment {
                     json.put("text", "head right");
                     json.put("params", params);
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 10, 0, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
-
-/*    private CommandListener mMotionListener = new CommandListener() {
-        @Override
-        public void onResult(int result, String message) {
-            LogTools.info("SportFragment result: " + result + " message:" + message);
-            if ("succeed".equals(message)) {
-            } else {
-            }
-        }
-    };*/
 
     public static Fragment newInstance() {
         return new com.example.myfirstapp.fragment.SportFragment();

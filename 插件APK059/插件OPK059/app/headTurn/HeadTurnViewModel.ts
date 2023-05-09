@@ -39,6 +39,7 @@ export class HeadTurnViewModel extends BaseViewModel {
     private bModel: BasicMotionModel;
     private headText: string | undefined;
     private return_obj = {"command": "", "text": "", "code": -1, "messaage": ""};
+    private tipsTimeout?: NodeJS.Timeout;
 
     /**
      * 构造函数
@@ -53,7 +54,9 @@ export class HeadTurnViewModel extends BaseViewModel {
      * 开始
      */
     public onStart(): void {
-
+        this.tipsTimeout = setTimeout(() => {
+            this.setDelayShow();
+        }, 3000);
     }
 
     /**
@@ -237,7 +240,7 @@ export class HeadTurnViewModel extends BaseViewModel {
         return this.hModel.getInfoText();
     }
 
-        /**
+    /**
      * 获取运动结果
      */
     @action
@@ -251,6 +254,19 @@ export class HeadTurnViewModel extends BaseViewModel {
 
     public getTriggerNum(): number {
         return this.hModel.getTriggerNum();
+    }
+
+    /**
+     * 获取延迟显示内容
+     */
+    public getDelayShow() {
+        return this.hModel.getDelayShow();
+    }
+    /**
+     * 设置延迟显示
+     */
+    public setDelayShow() {
+        this.hModel.setDelayShow();
     }
 
 }

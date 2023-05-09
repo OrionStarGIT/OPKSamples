@@ -1,7 +1,7 @@
-import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo, AppManager } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
-import { Text, View, Button, DeviceEventEmitter} from 'react-native';
+import { Text, View, Button, DeviceEventEmitter, Dimensions} from 'react-native';
 import { HeadTurnViewModel } from '../headTurn/HeadTurnViewModel';
 import { BasicMotionViewModel } from '../basicMotion/BasicMotionViewModel';
 import { StandardFaceTrackViewModel } from '../standardFaceTrack/StandardFaceTrackViewModel';
@@ -18,6 +18,7 @@ import { ChargeStartView } from '../chargeStart/ChargeStartView';
 import { NavigationView } from '../navigation/NavigationView';
 import { PersonAppearView } from '../personAppear/PersonAppearView';
 import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
+import { DelayShowView } from '../biz/delayshow/DelayShowView';
 
 //注册trigger跳转，必须添加，否则trigger无效
 triggerManager.addTrigger(new HeadTurnTrigger());
@@ -27,6 +28,7 @@ const BACKWARD_SPEED = -0.1;
 const LEFT_SPEED = 0.1;
 const RIGHT_SPEED = -0.1;
 const SPEED_NONE = 0;
+const { width,height } = Dimensions.get('screen');
 /**
  * 功能UI界面
  */
@@ -674,18 +676,14 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             //         <Text  style={{ fontSize: 17, color: 'red' }}>设置机器人拾音角度</Text>
             //     </View>  
             // );
+
             let params_to_apk = this.props.navigation.state.params.result;
             this.viewModel.conDoctor(params_to_apk);
-            let appid = AppManager.getAppId();
-            console.log('========================' + appid);
-            return(            
-                <View style={{ width: '100%', height: '100%' , alignItems:'center', justifyContent:'center', backgroundColor:'grey'}}>
-                    <Text>插件APK启动参数为：</Text>
-                    {/* <Text>APPID：{appid}</Text> */}
-                    <Text>PackageName：{ThirdApkInfo.PACKAGE_NAME}</Text>
-                    <Text>ActivityName：{ThirdApkInfo.MAIN_ACTIVITY}</Text>
-                    <Text>请检查对应apk是否安装，包名和activity名是否正确，并确保apk没有在后台运行。</Text>
-                </View>  
+            console.log('========================width:' + width + '   height:' + height);
+            return(
+                <>
+                    <DelayShowView viewModel={this.viewModel}/>
+                </>
             );
         } else if (this.viewModel.getHeadAction() == "head") {
             if (!this.viewModel) {

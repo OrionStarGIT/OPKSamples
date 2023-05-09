@@ -20,26 +20,19 @@ import android.content.Context;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.ainirobot.lib.shadowopk.RobotMessengerManager;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.example.myfirstapp.LogTools;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.application.MRobotMessenger;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AsrTtsFragment extends BaseFragment {
 
     private static final String TAG = "AsrTtsFragment";
-    //private TextView mAsrTts;
     private TextView mDomainIntent;
 
     @Override
@@ -59,18 +52,15 @@ public class AsrTtsFragment extends BaseFragment {
                 public void onResult(String result) {
                     Log.i("SHADOW_OPK", "收取callback内容asr: " + result);
                     JSONObject jsonObj = JSON.parseObject(result);
-                    //mAsrTts.setText(jsonObj.getString("intent"));
                     mDomainIntent.setText(jsonObj.getString("result"));
                 }
             });
-            //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     private void initViews(View root) {
-        //mAsrTts = root.findViewById(R.id.asr_tts_contents);
         mDomainIntent = root.findViewById(R.id.domain_intent_contents);
         mDomainIntent.setMovementMethod(new ScrollingMovementMethod());
     }

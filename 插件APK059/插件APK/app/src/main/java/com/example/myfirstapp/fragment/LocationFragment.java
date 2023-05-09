@@ -17,20 +17,13 @@
 package com.example.myfirstapp.fragment;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-//import com.ainirobot.coreservice.client.Definition;
-//import com.ainirobot.coreservice.client.RobotApi;
-//import com.ainirobot.coreservice.client.listener.CommandListener;
 import com.example.myfirstapp.LogTools;
 import com.example.myfirstapp.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class LocationFragment extends BaseFragment {
 
@@ -120,27 +113,7 @@ public class LocationFragment extends BaseFragment {
      * 判断机器人是否在位置点
      */
     private void isRobotInlocation() {
-        /*try {
-            JSONObject params = new JSONObject();
-            params.put(Definition.JSON_NAVI_TARGET_PLACE_NAME, "接待点");
-            params.put(Definition.JSON_NAVI_COORDINATE_DEVIATION, 2.0);
 
-            RobotApi.getInstance().isRobotInlocations(0,
-                    params.toString(), new CommandListener() {
-                        @Override
-                        public void onResult(int result, String message) {
-                            try {
-                                JSONObject json = new JSONObject(message);
-                                json.getBoolean(Definition.JSON_NAVI_IS_IN_LOCATION);
-                                LogTools.info("isRobotInlocation result: " + result + " message: "+ message);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
     }
 
     /**
@@ -153,23 +126,6 @@ public class LocationFragment extends BaseFragment {
             LogTools.info("坐标为空,请先获取当前坐标");
             return;
         }
-/*        try {
-            JSONObject params = new JSONObject();
-            params.put(Definition.JSON_NAVI_POSITION_X, mCurrentX);
-            params.put(Definition.JSON_NAVI_POSITION_Y, mCurrentY);
-            params.put(Definition.JSON_NAVI_POSITION_THETA, mCurrentTheta);
-
-            RobotApi.getInstance().setPoseEstimate(0, params.toString(), new CommandListener() {
-                @Override
-                public void onResult(int result, String message) {
-                    LogTools.info("setPostEstimate result: " + result + " message: "+ message);
-                    if ("succeed".equals(message)) {
-                    }
-                }
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
     }
     /**
      * is robot
@@ -177,16 +133,6 @@ public class LocationFragment extends BaseFragment {
      */
 
     private void getName(){
-/*        RobotApi.getInstance().getMapName(0,new CommandListener(){
-            @Override
-            public void onResult(int result, String message, String extraData) {
-                super.onResult(result, message, extraData);
-                if (!TextUtils.isEmpty(message)) {
-                    String name = message;
-//                    LogTools.info(" name: ----" + name+"==="+message);
-                }
-            }
-        });*/
     }
 
 
@@ -195,65 +141,28 @@ public class LocationFragment extends BaseFragment {
      * 判断当前是否已定位
      */
     private void isRobotEstimate() {
-/*        RobotApi.getInstance().isRobotEstimate(0, new CommandListener() {
-            @Override
-            public void onResult(int result, String message) {
-                LogTools.info("isRobotEstimate result: " + result + " message: " + message);
-                if (!"true".equals(message)) {
-                } else {
-                }
-            }
-        });*/
+
     }
 
     /**
      * 设置当前位置名称
      */
     private void setLocation(){
-/*        RobotApi.getInstance().setLocation(0, "接待点", new CommandListener() {
-            @Override
-            public void onResult(int result, String message) {
-                LogTools.info("setLocation result: " + result + " message: " + message);
-                if ("succeed".equals(message)) {
-                } else {
-                }
-            }
-        });*/
+
     }
 
     /**
      * 获取当前坐标点
      */
     private void getLocation(){
-/*        RobotApi.getInstance().getPosition(0, new CommandListener() {
-            @Override
-            public void onResult(int result, String message) {
-                LogTools.info("getLocation result: " + result + " message: "+ message);
-                try {
-                    JSONObject json = new JSONObject(message);
-                    mCurrentX = json.getDouble(Definition.JSON_NAVI_POSITION_X);
-                    mCurrentY = json.getDouble(Definition.JSON_NAVI_POSITION_Y);
-                    mCurrentTheta = json.getDouble(Definition.JSON_NAVI_POSITION_THETA);
-                } catch (JSONException | NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
-        });*/
+
     }
 
     /**
      * 删除位置点
      */
     private void removeLocation(){
-/*        RobotApi.getInstance().removeLocation(0, "接待点", new CommandListener() {
-            @Override
-            public void onResult(int result, String message) {
-                LogTools.info("removeLocation result: " + result + " message: "+ message);
-                if ("succeed".equals(message)) {
-                } else {
-                }
-            }
-        });*/
+
     }
 
     public static Fragment newInstance() {

@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="560dp"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -25,7 +25,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -37,7 +37,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -57,7 +57,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -69,7 +69,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -88,7 +88,7 @@
                 android:id="@+id/lead_scene"
                 android:layout_width="60dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/lead_text"
@@ -100,7 +100,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -112,7 +112,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -132,7 +132,7 @@
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -140,20 +140,41 @@
                 android:textColor="#FFFFFF" />
 
             <Button
+                android:id="@+id/face_trace"
+                android:layout_width="60dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/face_trace"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
                 android:id="@+id/robot_info"
                 android:layout_width="60dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:text="@string/robot_info"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
+
     </LinearLayout>
 
-        <Button
+    <Button
             android:layout_gravity="right|bottom"
             android:id="@+id/exit"
             android:layout_width="60dp"

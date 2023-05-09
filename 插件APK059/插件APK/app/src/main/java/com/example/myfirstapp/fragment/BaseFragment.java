@@ -25,7 +25,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        //LogTools.info("验证onAttach方法addView执行前：" + "onAttach内部");
         super.onAttach(context);
         if (context instanceof MainActivity) {
             mActivity = (MainActivity) context;
@@ -44,11 +43,8 @@ public abstract class BaseFragment extends Fragment {
         mBv_back = (BackView) root.findViewById(R.id.bv_back);
         mRl_content = (RelativeLayout) root.findViewById(R.id.rl_content);
         mRv_result = (ResultView) root.findViewById(R.id.rv_result);
-        //LogTools.info("验证onAttach方法addView执行前：" + "准备开始");
         View vw = onCreateView(mActivity);
-        //LogTools.info("验证onAttach方法addView执行前：" + "已完成onCreateView");
         mRl_content.addView(onCreateView(mActivity));
-        //LogTools.info("验证onAttach方法addView执行前：" + "执行完毕");
     }
 
     protected void showBackView() { mBv_back.setVisibility(View.VISIBLE);}

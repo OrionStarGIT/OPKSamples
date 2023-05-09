@@ -17,7 +17,6 @@
 package com.example.myfirstapp.fragment;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,17 +24,10 @@ import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 
 import com.ainirobot.lib.shadowopk.RobotMessengerManager;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
 import com.example.myfirstapp.MainActivity;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.application.RobotOSApplication;
-import com.example.myfirstapp.application.MRobotMessenger;
-
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainFragment extends BaseFragment {
 
@@ -47,6 +39,7 @@ public class MainFragment extends BaseFragment {
     private Button mAsr_tts;
     private Button mNavigation_scene;
     private Button mTrigger_scene;
+    private Button mFaceTrace_scene;
     private Button mRobotInfo_scene;
     private Button mExit;
     private Context mContext;
@@ -67,12 +60,7 @@ public class MainFragment extends BaseFragment {
 
     private void addFragmentListener() {
         try {
-/*            MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
-                @Override
-                public void onResult(String result) {
-                    Log.i("SHADOW_OPK", "收取MainFragment文件的callback内容: " + result);
-                }
-            });*/
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -87,6 +75,7 @@ public class MainFragment extends BaseFragment {
         mAsr_tts = (Button) root.findViewById(R.id.asr_tts);
         mNavigation_scene = (Button) root.findViewById(R.id.navigation_scene);
         mTrigger_scene = (Button) root.findViewById(R.id.click_to_trigger);
+        mFaceTrace_scene = (Button) root.findViewById(R.id.face_trace);
         mRobotInfo_scene = (Button) root.findViewById(R.id.robot_info);
         mExit = (Button) root.findViewById(R.id.exit);
         mExit.setOnClickListener(new View.OnClickListener() {
@@ -96,29 +85,6 @@ public class MainFragment extends BaseFragment {
                 MainActivity.getInstance().finish();
                 onDestroy();
                 System.exit(0);
-                //System.exit(0);
-//                /**
-//                 * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
-//                 */
-//                Map<String, Object> map = new HashMap<String, Object>();
-//                map.put("command", "exit");
-//                map.put("text", "exit the apk and go to home page");
-//                RobotMessengerManager.INSTANCE.triggerCommand(JSON.toJSONString(map));
-//
-//                MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
-//                    @Override
-//                    public void onResult(String result) {
-//                        JSONObject jsonObj = JSON.parseObject(result);
-//                        Log.i("SHADOW_OPK", "收到的退出消息内容: " + result);
-//                        String intent = jsonObj.getString("intent");
-//                        Log.i("SHADOW_OPK", "收到intent的内容: " + intent);
-//                        if (intent.equals("stop")) {
-//                            RobotMessengerManager.INSTANCE.disConnectRobot((Context) mContext);
-//                            Log.i("SHADOW_OPK", "停止操作有没有被执行: " + result);
-//                            //System.exit(0);
-//                        }
-//                    }
-//                });
             }
         });
         mLead_scene.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +125,6 @@ public class MainFragment extends BaseFragment {
         mNavigation_scene.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                switchFragment(NavigationFragment.newInstance());
                 switchFragment(NavFragment.newInstance());
             }
         });
@@ -175,6 +140,13 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 switchFragment(TriggerFragment.newInstance());
+            }
+        });
+
+        mFaceTrace_scene.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchFragment(VisionFragment.newInstance());
             }
         });
 

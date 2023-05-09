@@ -24,7 +24,7 @@ export enum ThirdApkInfo {
     // MAIN_ACTIVITY = 'com.bx.shangshu.activity.MainActivity', 
     // PACKAGE_NAME = 'com.mon.qinglan',//'上海青岚'
     // MAIN_ACTIVITY = 'com.mon.qinglan.MainActivity',
-    // PACKAGE_NAME = 'com.qinuu.yongdian',//河北奇诺信息
+    // PACKAGE_NAME = 'com.qinuo.yongdian',//河北奇诺信息
     // MAIN_ACTIVITY = 'com.qinuo.yongdian.MainActivity',
     // PACKAGE_NAME = 'com.dlserver.robot',//代理商深圳市大爱大白科技有限公司
     // MAIN_ACTIVITY = 'om.dlserver.robot.activity.MainActivity',

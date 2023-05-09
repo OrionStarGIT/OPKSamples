@@ -29,8 +29,6 @@ import com.example.myfirstapp.MainActivity;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.application.MRobotMessenger;
 import com.example.myfirstapp.application.RobotOSApplication;
-import com.example.myfirstapp.maputils.MapppUtils;
-import com.example.myfirstapp.maputils.Pose2d;
 import com.example.myfirstapp.view.MapView;
 
 import org.json.JSONException;
@@ -73,21 +71,17 @@ public class TriggerFragment extends BaseFragment {
                     MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
                         @Override
                         public void onResult(String result) {
-                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener: " + result);
-                            mMapView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
-                                    String command = jsonObj.getString("command");
-                                    if (command == "shutDownAPP36362227") {
-                                        closeCurrentApk(result);
-                                    }
-                                }
-                            });
-
+                            com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
+                            String command = jsonObj.getString("command");
+                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener0: " + result);
+                            if (command.equals("shutDownAPP36362227")) {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener1: " + result);
+                                closeCurrentApk(result);
+                            } else {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener3: " + command);
+                            }
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -110,21 +104,17 @@ public class TriggerFragment extends BaseFragment {
                     MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
                         @Override
                         public void onResult(String result) {
-                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener: " + result);
-                            mMapView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
-                                    String command = jsonObj.getString("command");
-                                    if (command == "shutDownAPP36362228") {
-                                        closeCurrentApk(result);
-                                    }
-                                }
-                            });
-
+                            com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
+                            String command = jsonObj.getString("command");
+                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener10: " + result);
+                            if (command.equals("shutDownAPP36362228")) {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener11: " + result);
+                                closeCurrentApk(result);
+                            } else {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener13: " + command);
+                            }
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -147,21 +137,18 @@ public class TriggerFragment extends BaseFragment {
                     MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
                         @Override
                         public void onResult(String result) {
-                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener: " + result);
-                            mMapView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
-                                    String command = jsonObj.getString("command");
-                                    if (command == "shutDownAPP36362229") {
-                                        closeCurrentApk(result);
-                                    }
-                                }
-                            });
 
+                            com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
+                            String command = jsonObj.getString("command");
+                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener20: " + result);
+                            if (command.equals("shutDownAPP36362229")) {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener21: " + result);
+                                closeCurrentApk(result);
+                            } else {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener23: " + command);
+                            }
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -184,21 +171,18 @@ public class TriggerFragment extends BaseFragment {
                     MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
                         @Override
                         public void onResult(String result) {
-                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener: " + result);
-                            mMapView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
-                                    String command = jsonObj.getString("command");
-                                    if (command == "shutDownAPP36362230") {
-                                        closeCurrentApk(result);
-                                    }
-                                }
-                            });
 
+                            com.alibaba.fastjson.JSONObject jsonObj = JSON.parseObject(result);
+                            String command = jsonObj.getString("command");
+                            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener30: " + result);
+                            if (command.equals("shutDownAPP36362230")) {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener31: " + result);
+                                closeCurrentApk(result);
+                            } else {
+                                Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener33: " + command);
+                            }
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -211,6 +195,7 @@ public class TriggerFragment extends BaseFragment {
             /*
              * 关闭当前APK
              * */
+            Log.i("SHADOW_OPK", "收取callback内容triggerToOpkListener2:" + result);
             RobotMessengerManager.INSTANCE.disConnectRobot((Context) mContext);
             MainActivity.getInstance().finish();
             onDestroy();

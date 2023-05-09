@@ -24,12 +24,10 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.ainirobot.lib.shadowopk.RobotMessengerManager;
-import com.alibaba.fastjson.JSON;
 import com.example.myfirstapp.MainActivity;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.application.MRobotMessenger;
 import com.example.myfirstapp.application.RobotOSApplication;
-import com.example.myfirstapp.view.MapView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,7 +67,6 @@ public class RobotInfoFragment extends BaseFragment {
                             Log.i("SHADOW_OPK", "收取callback内容getRobotSnListener: " + result);
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -96,7 +93,6 @@ public class RobotInfoFragment extends BaseFragment {
                             Log.i("SHADOW_OPK", "收取callback内容getRobotSnListener: " + result);
                         }
                     });
-                    //RobotApi.getInstance().moveHead(reqId++, "relative", "relative", 0, -10, mMotionListener);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

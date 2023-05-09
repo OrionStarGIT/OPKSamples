@@ -18,20 +18,14 @@ package com.example.myfirstapp.fragment;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-//import com.ainirobot.coreservice.client.listener.TextListener;
-//import com.ainirobot.coreservice.client.speech.SkillApi;
-//import com.ainirobot.coreservice.client.speech.entity.TTSEntity;
 import com.ainirobot.lib.shadowopk.RobotMessengerManager;
-import com.example.myfirstapp.LogTools;
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.application.RobotOSApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,12 +35,10 @@ public class SpeechFragment extends BaseFragment {
     private Button mPlay_btn;
     private Button mStop_btn;
     private Button mQuery_btn;
-    //private SkillApi mSkillApi;
     private EditText mEt_play_text;
 
     @Override
     public View onCreateView(Context context) {
-        //mSkillApi = RobotOSApplication.getInstance().getSkillApi();
         View root = mInflater.inflate(R.layout.fragment_speech_layout,null,false);
         bindViews(root);
         return root;
@@ -102,36 +94,7 @@ public class SpeechFragment extends BaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-/*        if (mSkillApi != null) {
-            mSkillApi.playText(new TTSEntity("sid-1234567890", text), mTextListener);
-        }*/
     }
-
-/*    private TextListener mTextListener = new TextListener() {
-        @Override
-        public void onStart() {
-            super.onStart();
-            LogTools.info("onStart");
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            LogTools.info("onStop");
-        }
-
-        @Override
-        public void onComplete() {
-            super.onComplete();
-            LogTools.info("onComplete");
-        }
-
-        @Override
-        public void onError() {
-            super.onError();
-            LogTools.info("onError");
-        }
-    };*/
 
     private void stopTTS(){
         try {
@@ -146,9 +109,6 @@ public class SpeechFragment extends BaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-/*        if(mSkillApi != null){
-            mSkillApi.stopTTS();
-        }*/
     }
 
     private void queryByText(String text){
@@ -164,9 +124,6 @@ public class SpeechFragment extends BaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-/*        if(mSkillApi != null){
-            mSkillApi.queryByText(text);
-        }*/
     }
 
     public static Fragment newInstance() {

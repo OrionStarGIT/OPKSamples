@@ -36,6 +36,8 @@ export class HeadTurnModel {
     //跳转OPK的trigger数
     @observable private triggerNumber: number = 36362226;
 
+    //延迟显示apk提示
+    @observable private delayShow: boolean = false;
     /**
      * 构造函数
      */
@@ -155,4 +157,13 @@ export class HeadTurnModel {
     public getTriggerNum(): number {
         return this.triggerNumber;
     }
+
+    @action
+    public setDelayShow() {
+        this.delayShow = true;
+    }
+
+    public getDelayShow(): boolean {
+        return this.delayShow;
+    }    
 }
