@@ -1,4 +1,4 @@
-import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, NLPApkControl, NLPApkControlListener, speechApi, HeadTurnComponent, BasicMotionComponent, StandardFaceTrackComponent, ChargeStartComponent, NavigationComponent, RobotApi, CommandListener, PersonAppearComponent, SystemInfo, TextListener } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Text, View, Button, DeviceEventEmitter, Dimensions} from 'react-native';
@@ -330,7 +330,7 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.code = this.callback ? this.callback.getId() : -1;
                         let result = JSON.stringify(this.return_obj);
                         NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
-                    } else if (eventDataObj.command === "traceFace") {
+                    } else if (eventDataObj.command === "trackFace") {
                         console.log(
                             TAG,
                             '10:' + JSON.stringify(event)
@@ -338,15 +338,15 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         let text = eventDataObj.text;
                         //speechApi.playText(-1,text);
                         this.viewModel.setHeadAction("face");
-                        this.fviewModel.onPressHeadUp();
-                    } else if (eventDataObj.command === "stopTraceFace") {
+                        this.fviewModel.startFaceTrack(eventDataObj.personId, eventDataObj.maxDistance, eventDataObj.maxFaceAngleX, eventDataObj.isNeedInCompleteFace, eventDataObj.disappearTimeout, eventDataObj.isMultiPersonNotTrack, eventDataObj.multiPersonNotTrackDistance, eventDataObj.isAllowMoveBody);
+                    } else if (eventDataObj.command === "stopTrackFace") {
                         console.log(
                             TAG,
                             '11:' + JSON.stringify(event)
                         );
                         let text = eventDataObj.text;
                         //speechApi.playText(-1,text);
-                        this.fviewModel.onPressHeadDown();
+                        this.fviewModel.onPressStopFaceTrack();
                         this.viewModel.setHeadAction("exit");
                     } else if (eventDataObj.command === "map") {
                         console.log(
@@ -393,13 +393,18 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             '15:' + JSON.stringify(event)
                         );
                         let text = eventDataObj.text;
-                        speechApi.playText(-1,text);
+                        let listener = new TextListener();
+                        listener.setFinish(() => {
+                            this.return_obj.command = eventDataObj.command;
+                            this.return_obj.text = eventDataObj.text;
+                            this.return_obj.code = 1;
+                            let result = JSON.stringify(this.return_obj);
+                            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
+                            //TODO: 播放完成
+                            listener.removeListener();
+                        });
+                        speechApi.playText(listener.getId(),text);
                         this.viewModel.setHeadAction("exit");
-                        this.return_obj.command = eventDataObj.command;
-                        this.return_obj.text = eventDataObj.text;
-                        this.return_obj.code = 1;
-                        let result = JSON.stringify(this.return_obj);
-                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
                     } else if (eventDataObj.command === "speechStop") {
                         console.log(
                             TAG,
@@ -491,11 +496,25 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         this.return_obj.message = "设置声音识别区域";
                         let result = JSON.stringify(this.return_obj);
                         NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);                           
+
+                    } else if (eventDataObj.command === "setRecognizeMode") {
+                        console.log(
+                            TAG,
+                            '24:' + JSON.stringify(event)
+                        );
+                        let mode = eventDataObj.mode;
+                        speechApi.setRecognizeMode(mode);
+                        this.viewModel.setHeadAction("exit");
+                        this.return_obj.command = eventDataObj.command;
+                        this.return_obj.text = eventDataObj.text;
+                        this.return_obj.code = 1;
+                        let result = JSON.stringify(this.return_obj);
+                        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);                        
                         
                     } else if (eventDataObj.command === "exit") {
                         console.log(
                             TAG,
-                            '24:' + JSON.stringify(event)
+                            '25:' + JSON.stringify(event)
                         );
                         console.log("退出操作");
                         //NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);

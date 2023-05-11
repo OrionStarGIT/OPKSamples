@@ -21,4 +21,12 @@
         android:layout_marginLeft="8dp"
         android:text="@string/set_angle_center_range" />
 
+    <Button
+        android:id="@+id/set_recognize_mode"
+        style="@style/TextStyle"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/set_recognize_mode" />
+
 </LinearLayout>

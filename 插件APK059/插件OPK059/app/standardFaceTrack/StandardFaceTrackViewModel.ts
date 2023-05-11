@@ -29,7 +29,7 @@ export class StandardFaceTrackViewModel extends BaseViewModel {
 
     //数据模块
     private mModel: StandardFaceTrackModel;
-    private return_obj = {"command": "", "text": "", "code": -1, "messaage": ""};
+    private return_obj = {"command": "", "text": "", "code": -1, "data": "", "messaage": ""};
     /**
      * 构造函数
      */
@@ -55,14 +55,28 @@ export class StandardFaceTrackViewModel extends BaseViewModel {
     /**
      * 点击开始人脸跟随
      */
-    public onPressHeadUp = (): void => {
+    public onPressFaceTrack = (): void => {
         this.mModel.startTrack();
     };
 
     /**
      * 点击结束人脸跟随
      */
-    public onPressHeadDown = (): void => {
+    public onPressStopFaceTrack = (): void => {
+        this.mModel.finishRunning();
+    };
+
+    /**
+     * 开始人脸跟随（插件）
+     */
+    public startFaceTrack = (personId: number, maxDistance: number, maxFaceAngleX: number, isNeedInCompleteFace: boolean, disappearTimeout: number, isMultiPersonNotTrack: boolean, multiPersonNotTrackDistance: number, isAllowMoveBody: boolean): void => {
+        this.mModel.startTrackCondition(personId, maxDistance, maxFaceAngleX, isNeedInCompleteFace, disappearTimeout, isMultiPersonNotTrack, multiPersonNotTrackDistance, isAllowMoveBody);
+    };
+
+    /**
+     * 停止人脸跟随（插件）
+     */
+    public stopFaceTrack = (): void => {
         this.mModel.finishRunning();
     };
 
@@ -71,6 +85,13 @@ export class StandardFaceTrackViewModel extends BaseViewModel {
      */
     public onStatusUpdate = (event?: ComponentEvent): boolean => {
         if (event && event.status) {
+            //焦点跟随发送方式
+            this.return_obj.command = "facAction";
+            this.return_obj.text = "face action";
+            this.return_obj.code = event && event.status;
+            this.return_obj.data = event.data ? JSON.stringify(event.data) : "";
+            let result = JSON.stringify(this.return_obj);
+            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             switch (event.status) {
                 case ComponentStatusConst.STATUS_TRACK_SUCCESS:
                     this.mModel.appendResultText(
@@ -95,10 +116,11 @@ export class StandardFaceTrackViewModel extends BaseViewModel {
     public onFinish = (event?: ComponentEvent): boolean => {
         this.mModel.finishRunning();
         if (event && event.status) {
-            //身体 头部运动发送方式
+            //焦点跟随发送方式
             this.return_obj.command = "facAction";
             this.return_obj.text = "face action";
-            this.return_obj.code = event.status;
+            this.return_obj.code = event && event.status;
+            this.return_obj.data = event.data ? JSON.stringify(event.data) : "";
             let result = JSON.stringify(this.return_obj);
             NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
             switch (event.status) {

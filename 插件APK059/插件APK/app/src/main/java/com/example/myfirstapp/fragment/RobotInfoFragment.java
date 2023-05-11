@@ -35,6 +35,7 @@ import org.json.JSONObject;
 public class RobotInfoFragment extends BaseFragment {
     private Button mGetRobotSnTrigger;
     private Button mSetAngleCenterRange;
+    private Button mSetRecognizeMode;
     private Context mContext;
 
     @Override
@@ -48,6 +49,7 @@ public class RobotInfoFragment extends BaseFragment {
     private void initViews(View root) {
         mGetRobotSnTrigger = (Button) root.findViewById(R.id.get_robot_sn);
         mSetAngleCenterRange = (Button) root.findViewById(R.id.set_angle_center_range);
+        mSetRecognizeMode = (Button) root.findViewById(R.id.set_recognize_mode);
 
         mGetRobotSnTrigger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +101,30 @@ public class RobotInfoFragment extends BaseFragment {
             }
         });
 
+        mSetRecognizeMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    /**
+                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     */
+                    Log.i("关键点", "开启长拾音");
+                    JSONObject json = new JSONObject();
+                    json.put("command", "setRecognizeMode");
+                    json.put("mode", true);
+                    json.put("text", "set recognize mode");
+                    RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
+                    MRobotMessenger.getInstance().setRobotCallback(new MRobotMessenger.RobotCallback() {
+                        @Override
+                        public void onResult(String result) {
+                            Log.i("SHADOW_OPK", "收取callback内容getRobotSnListener: " + result);
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void closeCurrentApk(String result) {

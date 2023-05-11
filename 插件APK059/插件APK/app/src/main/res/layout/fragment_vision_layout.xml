@@ -9,20 +9,20 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/trace_face_btn"
+            android:id="@+id/track_face_btn"
             style="@style/TextStyle"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:layout_marginLeft="15dp"
-            android:text="@string/vision_trace_face" />
+            android:text="@string/vision_track_face" />
 
         <Button
-            android:id="@+id/stop_trace_face_btn"
+            android:id="@+id/stop_track_face_btn"
             style="@style/TextStyle"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:layout_marginLeft="15dp"
-            android:text="@string/vision_stop_trace_face" />
+            android:text="@string/vision_stop_track_face" />
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"

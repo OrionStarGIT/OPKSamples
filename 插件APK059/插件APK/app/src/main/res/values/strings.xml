@@ -35,8 +35,8 @@
     <string name="sport_head">Head</string>
     <string name="sport_body">Body</string>
 
-    <string name="vision_trace_face">Start Trace Face</string>
-    <string name="vision_stop_trace_face">Stop Trace Face</string>
+    <string name="vision_track_face">Start Trace Face</string>
+    <string name="vision_stop_track_face">Stop Trace Face</string>
     <string name="vision_un_register">Unregister</string>
     <string name="vision_warning">Click button , than the screen will tracking your face. </string>
     <string name="vision_warning2">No api to delete person at the moment</string>
@@ -88,6 +88,6 @@
     <string name="robot_info">ROBOT INFO</string>
     <string name="get_robot_sn">GET ROBOT SN</string>
     <string name="set_angle_center_range">SET ANGLE CENTER RANGE(359,120)</string>
-
+    <string name="set_recognize_mode">SET RECOGNIZE MODE</string>
 
 </resources>

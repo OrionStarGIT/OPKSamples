@@ -38,6 +38,22 @@ export class StandardFaceTrackModel {
     }
 
     /**
+     * 开始跟随根据条件
+     */
+    @action
+    public startTrackCondition(personId: number, maxDistance: number, maxFaceAngleX: number, isNeedInCompleteFace: boolean, disappearTimeout: number, isMultiPersonNotTrack: boolean, multiPersonNotTrackDistance: number, isAllowMoveBody: boolean): void {
+        this.mStandardFaceTrackParam.personId = personId;
+        this.mStandardFaceTrackParam.maxDistance = maxDistance;
+        this.mStandardFaceTrackParam.maxFaceAngleX = maxFaceAngleX;
+        this.mStandardFaceTrackParam.isNeedInCompleteFace = isNeedInCompleteFace;
+        this.mStandardFaceTrackParam.disappearTimeout = disappearTimeout;
+        this.mStandardFaceTrackParam.isMultiPersonNotTrack = isMultiPersonNotTrack;
+        this.mStandardFaceTrackParam.multiPersonNotTrackDistance = multiPersonNotTrackDistance;
+        this.mStandardFaceTrackParam.isAllowMoveBody = isAllowMoveBody;
+        this.mIsRunning = true;
+    }
+
+    /**
      * 开始跟随
      */
     @action

@@ -29,8 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class VisionFragment extends BaseFragment {
-    private static String TRACE_FACE = "traceFace";
-    private static String STOP_TRACE_FACE = "stopTraceFace";
+    private static String TRACk_FACE = "trackFace";
+    private static String STOP_TRACk_FACE = "stopTrackFace";
 
     @Override
     public View onCreateView(Context context) {
@@ -42,9 +42,9 @@ public class VisionFragment extends BaseFragment {
     private String action = "";
 
     public void initViews(View root){
-        Button traceFaceBtn = root.findViewById(R.id.trace_face_btn);
-        Button stopTraceFaceBtn = root.findViewById(R.id.stop_trace_face_btn);
-        traceFaceBtn.setOnClickListener(new View.OnClickListener() {
+        Button trackFaceBtn = root.findViewById(R.id.track_face_btn);
+        Button stopTrackFaceBtn = root.findViewById(R.id.stop_track_face_btn);
+        trackFaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -52,8 +52,16 @@ public class VisionFragment extends BaseFragment {
                      * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject json = new JSONObject();
-                    json.put("command", "traceFace");
-                    json.put("text", "trace face");
+                    json.put("command", "trackFace");
+                    json.put("personId", -1);
+                    json.put("maxDistance", 3);
+                    json.put("maxFaceAngleX", 60);
+                    json.put("isNeedInCompleteFace", false);
+                    json.put("disappearTimeout", 7000);
+                    json.put("isMultiPersonNotTrack", false);
+                    json.put("multiPersonNotTrackDistance", 2);
+                    json.put("isAllowMoveBody", true);
+                    json.put("text", "track face");
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -61,7 +69,7 @@ public class VisionFragment extends BaseFragment {
             }
         });
 
-        stopTraceFaceBtn.setOnClickListener(new View.OnClickListener() {
+        stopTrackFaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -69,8 +77,8 @@ public class VisionFragment extends BaseFragment {
                      * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject json = new JSONObject();
-                    json.put("command", "stopTraceFace");
-                    json.put("text", "stop trace face");
+                    json.put("command", "stopTrackFace");
+                    json.put("text", "stop track face");
                     RobotMessengerManager.INSTANCE.triggerCommand(json.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();

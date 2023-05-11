@@ -90,13 +90,13 @@ export class StandardFaceTrackView extends Component<StandardFaceTrackViewProp> 
                     <Button
                         color={'dodgerblue'}
                         title={'开始人脸跟随'}
-                        onPress={this.props.viewModel.onPressHeadUp}/>
+                        onPress={this.props.viewModel.onPressFaceTrack}/>
                 </View>
                 <View style={styles.button}>
                     <Button
                         color={'dodgerblue'}
                         title={'停止人脸跟随'}
-                        onPress={this.props.viewModel.onPressHeadDown}/>
+                        onPress={this.props.viewModel.onPressStopFaceTrack}/>
                 </View>
                 <SafeAreaView style={styles.resultArea}>
                     <ScrollView
