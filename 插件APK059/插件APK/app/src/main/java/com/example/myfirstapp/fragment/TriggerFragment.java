@@ -60,7 +60,7 @@ public class TriggerFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “Trigger跳转” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "Trigger 跳转到 OPK");
                     JSONObject json = new JSONObject();
@@ -93,7 +93,7 @@ public class TriggerFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “Trigger跳转” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "Trigger 跳转到 OPK");
                     JSONObject json = new JSONObject();
@@ -126,7 +126,7 @@ public class TriggerFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “Trigger跳转” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "Trigger 跳转到 OPK");
                     JSONObject json = new JSONObject();
@@ -160,7 +160,7 @@ public class TriggerFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “Trigger跳转” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "Trigger 跳转到 OPK");
                     JSONObject json = new JSONObject();

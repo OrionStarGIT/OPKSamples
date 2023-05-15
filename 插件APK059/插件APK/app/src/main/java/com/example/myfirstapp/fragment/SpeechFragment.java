@@ -83,7 +83,7 @@ public class SpeechFragment extends BaseFragment {
     private void playText(String text) {
         try {
             /**
-             * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+             * 测试发送一个 "播放 tts" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
              */
             //Log.i("关键点", text);
             JSONObject json = new JSONObject();
@@ -99,7 +99,7 @@ public class SpeechFragment extends BaseFragment {
     private void stopTTS(){
         try {
             /**
-             * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+             * 测试发送一个 "停止播放 tts" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
              */
             JSONObject json = new JSONObject();
             json.put("command", "speechStop");
@@ -114,7 +114,7 @@ public class SpeechFragment extends BaseFragment {
     private void queryByText(String text){
         try {
             /**
-             * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+             * 测试发送一个 "查询播报" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
              */
             JSONObject json = new JSONObject();
             json.put("command", "speechQuery");

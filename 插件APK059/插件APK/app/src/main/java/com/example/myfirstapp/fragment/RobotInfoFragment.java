@@ -56,7 +56,7 @@ public class RobotInfoFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “获取机器人SN” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "获取 robot sn");
                     JSONObject json = new JSONObject();
@@ -80,7 +80,7 @@ public class RobotInfoFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “设置语音识别角度” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "设置语音识别区域");
                     JSONObject json = new JSONObject();
@@ -106,7 +106,7 @@ public class RobotInfoFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 “开启长拾音” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "开启长拾音");
                     JSONObject json = new JSONObject();

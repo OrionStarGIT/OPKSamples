@@ -68,7 +68,7 @@ public class NavFragment extends Fragment {
     private void addCurrentPositionListener() {
         try {
             /**
-             * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+             * 测试发送一个 "“获取当前坐标”" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
              */
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("command", "currentPosition");
@@ -116,7 +116,7 @@ public class NavFragment extends Fragment {
     private void addFragmentListener() {
         try {
             /**
-             * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+             * 测试发送一个 “获取地图” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
              */
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("command", "map");
@@ -248,7 +248,7 @@ public class NavFragment extends Fragment {
      */
     public static void startNavigation(String placeName) {
         /**
-         * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+         * 测试发送一个 “导航” 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
          */
         JSONObject params = new JSONObject();
         params.put("coordinate_deviation", 0.5); //目的地范围，在目的地范围内均认为正常到达，默认0.5米
@@ -277,7 +277,7 @@ public class NavFragment extends Fragment {
      */
     private void stopNavigation() {
         /**
-         * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+         * 测试发送一个 "停止导航" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
          */
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("command", "stopMapSite");

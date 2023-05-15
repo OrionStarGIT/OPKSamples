@@ -53,7 +53,7 @@ public class ChargeFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "充电" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "充电按钮点击事件");
                     JSONObject json = new JSONObject();
@@ -72,7 +72,7 @@ public class ChargeFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "停止充电" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     Log.i("关键点", "停止充电按钮点击事件");
                     JSONObject json = new JSONObject();

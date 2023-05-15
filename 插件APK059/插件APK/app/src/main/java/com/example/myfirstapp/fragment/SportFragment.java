@@ -69,7 +69,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "前进" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("lineSpeed", 0.1);
@@ -92,7 +92,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "后退" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("lineSpeed", -0.1);
@@ -114,7 +114,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "左转" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("lineSpeed", 0);
@@ -136,7 +136,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "右转" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("lineSpeed", 0);
@@ -159,7 +159,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "停止身体运动" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject json = new JSONObject();
                     json.put("command", "bodyStop");
@@ -176,7 +176,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "抬头" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("hMode", "relative");
@@ -199,7 +199,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "低头" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("hMode", "relative");
@@ -222,7 +222,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "头部左转" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("hMode", "relative");
@@ -245,7 +245,7 @@ public class SportFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "头部右转" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject params = new JSONObject();
                     params.put("hMode", "relative");

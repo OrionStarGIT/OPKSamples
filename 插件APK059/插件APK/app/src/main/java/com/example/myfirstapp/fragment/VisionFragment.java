@@ -49,7 +49,7 @@ public class VisionFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "人脸自动追踪" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject json = new JSONObject();
                     json.put("command", "trackFace");
@@ -74,7 +74,7 @@ public class VisionFragment extends BaseFragment {
             public void onClick(View v) {
                 try {
                     /**
-                     * 测试发送一个播放 tts 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
+                     * 测试发送一个 "停止人脸自动追踪" 指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
                      */
                     JSONObject json = new JSONObject();
                     json.put("command", "stopTrackFace");
