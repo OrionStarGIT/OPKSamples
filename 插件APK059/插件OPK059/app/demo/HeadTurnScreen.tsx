@@ -19,6 +19,7 @@ import { NavigationView } from '../navigation/NavigationView';
 import { PersonAppearView } from '../personAppear/PersonAppearView';
 import { ThirdApkInfo } from '../biz/base/ThirdApkInfo';
 import { DelayShowView } from '../biz/delayshow/DelayShowView';
+import { DefaultShowView } from '../biz/delayshow/DefaultShowView';
 
 //注册trigger跳转，必须添加，否则trigger无效
 triggerManager.addTrigger(new HeadTurnTrigger());
@@ -404,7 +405,9 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             listener.removeListener();
                         });
                         speechApi.playText(listener.getId(),text);
-                        this.viewModel.setHeadAction("exit");
+                        if (this.viewModel.getHeadAction() !== "face") {
+                            this.viewModel.setHeadAction("exit");
+                        }
                     } else if (eventDataObj.command === "speechStop") {
                         console.log(
                             TAG,
@@ -719,7 +722,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.viewModel&&this.viewModel.onFinish}/>
                     ) : null}
                     {/*界面*/}
-                    <HeadTurnView viewModel={this.viewModel}/>
+                    {/* <HeadTurnView viewModel={this.viewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
         } else if (this.viewModel.getHeadAction() == "body") {
@@ -736,7 +740,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.bviewModel&&this.bviewModel.onFinish}/>
                     ) : null}
                     {/*界面*/}
-                    <BasicMotionView viewModel={this.bviewModel}/>
+                    {/* <BasicMotionView viewModel={this.bviewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
         } else if (this.viewModel.getHeadAction() == "face") {
@@ -754,7 +759,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.fviewModel && this.fviewModel.onFinish}/>
                     ) : null}
                     {/*界面*/}
-                    <StandardFaceTrackView viewModel={this.fviewModel}/>
+                    {/* <StandardFaceTrackView viewModel={this.fviewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
         } else if (this.viewModel.getHeadAction() == "charge") {
@@ -772,7 +778,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.cviewModel && this.cviewModel.onFinish}/>
                     ) : null}
                     {/*界面*/}
-                    <ChargeStartView viewModel={this.cviewModel}/>
+                    {/* <ChargeStartView viewModel={this.cviewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
         } else if (this.viewModel.getHeadAction() == "mapSite") {
@@ -789,7 +796,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.nviewModel && this.nviewModel.onFinish}/>
                     ) : null}
                     {/*界面*/}
-                    <NavigationView viewModel={this.nviewModel}/>
+                    {/* <NavigationView viewModel={this.nviewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
         } else if (this.viewModel.getHeadAction() == "personAppear") {
@@ -806,7 +814,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             onFinish={this.pviewModel && this.pviewModel.onFinish}/>
                     ) : <View><Text>进入到了personAppear的else的方法里面</Text></View>}
                     {/*界面*/}
-                    <PersonAppearView viewModel={this.pviewModel}/>
+                    {/* <PersonAppearView viewModel={this.pviewModel}/> */}
+                    <DefaultShowView viewModel={this.viewModel}/>
                 </>
             );
 
@@ -817,7 +826,11 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             //         <Button title={"退出"} onPress={this.goHome}/>
             //     </View>  
             // );
-            return (null);
+            return(
+                <>
+                    <DefaultShowView viewModel={this.viewModel}/>
+                </>
+            );
         }
     }
 }
