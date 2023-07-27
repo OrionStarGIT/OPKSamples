@@ -559,7 +559,11 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             NLPApkControlListener.EVENT_ON_PROCESS_DIED,
             (event: any) => {
                 console.log(TAG, 'EVENT_ON_PROCESS_DIED:' + JSON.stringify(event));
-                this.goHome(this.viewModel.getTriggerNum());
+                try {
+                    this.goHome(this.viewModel.getTriggerNum());
+                } catch (e) {
+                    console.log(TAG, 'EVENT_ON_PROCESS_DIED exception:' + JSON.stringify(e));
+                }
             }
         );
         this.nlpApkControlListener.addListener(
@@ -585,7 +589,13 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                     'EVENT_ON_PROCESS_INVISIBLE:' + JSON.stringify(event)
                 );
                 NLPApkControl.forceStopPackage(ThirdApkInfo.PACKAGE_NAME);
-                this.goHome(this.viewModel.getTriggerNum());
+                try {
+                    this.goHome(this.viewModel.getTriggerNum());
+                } catch (e) {
+                    console.log(TAG,
+                        'EVENT_ON_PROCESS_INVISIBLE:' + JSON.stringify(e)
+                    );
+                }
             }
         );
         this.nlpApkControlListener.addListener(
@@ -604,7 +614,14 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                     TAG,
                     'EVENT_ON_SERVICE_DISCONNECTED:' + JSON.stringify(event)
                 );
-                this.goHome(this.viewModel.getTriggerNum());
+                try {
+                    this.goHome(this.viewModel.getTriggerNum());
+                } catch (e) {
+                    console.log(
+                        TAG,
+                        'EVENT_ON_SERVICE_DISCONNECTED:' + JSON.stringify(e)
+                    );
+                }
             }
         );
         this.nlpApkControlListener.addListener(
