@@ -90,7 +90,6 @@ public class PersonAppearFarawayFragment extends Fragment {
         sb.delete(0, sb.length());
         mCurrentState = PersonAppearState.CHECK_PERSON;
         tipView.setText("检测中...,请稍等");
-        Log.i("SHADOW_OPK", "00000000000000");
         /**
          * 测试发送一个  “根据条件找人”  指令， opk demo 中收到播放指令，会将指令通过 MRobotMessenger 再回传回来
          */
@@ -105,15 +104,14 @@ public class PersonAppearFarawayFragment extends Fragment {
                 Log.i("SHADOW_OPK", "收取callback内容getRobotSnListener: " + result);
                 ResponseBean responseBean = GsonUtil.fromJson(result, ResponseBean.class);
                 if (!TextUtils.equals("personAppearAction", responseBean.getCommand())) {
-                    Log.i("SHADOW_OPK", "66666666666666 " + responseBean.getCommand());
+                    Log.i("SHADOW_OPK", "非当前指令 " + responseBean.getCommand());
                     return;
                 }
                 if (responseBean.getCode() == 32610001) {
                     checkPersonAppearSuccess(responseBean);
                 } else {
-                    Log.i("SHADOW_OPK", "55555555555555 " + responseBean.getCode());
                     if (responseBean.getCode() == 32610003) {
-                        Log.i("SHADOW_OPK", "onResult: ");
+                        Log.i("SHADOW_OPK", "onResult: 超时未检测到符合条件的人");
                         tipView.setText("超时未检测到符合条件的人");
                     } else if (responseBean.getCode() == -32600004) {
                         Log.i("SHADOW_OPK", "onResult: 获取人脸数据失败");
@@ -128,13 +126,11 @@ public class PersonAppearFarawayFragment extends Fragment {
     private long mLastTtsTime;
 
     private void checkPersonAppearSuccess(ResponseBean responseBean) {
-        Log.i("SHADOW_OPK", "1111111111111111111111");
         String data = responseBean.getData();
         String unescapedJsonString = data.substring(1, data.length() - 1);
         String personStr = unescapedJsonString.replace("\\\"", "\"");
         PersonBean personBean = GsonUtil.fromJson(personStr, PersonBean.class);
         if (mCurrentState == PersonAppearState.CHECK_PERSON) {
-            Log.i("SHADOW_OPK", "2222222222222222222222222222");
             tipView.setText("检测到人，等待识别");
             double distance = 5;
             int faceAngle = 60;
@@ -157,13 +153,11 @@ public class PersonAppearFarawayFragment extends Fragment {
             }
         } else if (mCurrentState == PersonAppearState.RECOGNIZE_PERSON) {
             mCurrentState = PersonAppearState.DEFAULT_STATE;
-            Log.i("SHADOW_OPK", "333333333333333333333");
             Log.i("SHADOW_OPK", "onResult: 识别成功 " + personBean.getName());
             tipView.setText("识别到：" + personBean.getName());
 
             speakTTS(personBean.getName() + "您好，很高兴见到您");
         } else {
-            Log.i("SHADOW_OPK", "444444444444444 " + mCurrentState);
             mCurrentState = PersonAppearState.DEFAULT_STATE;
             tipView.setText(R.string.person_appear_warning);
         }
