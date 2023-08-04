@@ -156,6 +156,12 @@ public class MainFragment extends BaseFragment {
                 switchFragment(RobotInfoFragment.newInstance());
             }
         });
+        root.findViewById(R.id.faraway_face_check).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchFragment(PersonAppearFarawayFragment.newInstance());
+            }
+        });
     }
 
     public static Fragment newInstance() {

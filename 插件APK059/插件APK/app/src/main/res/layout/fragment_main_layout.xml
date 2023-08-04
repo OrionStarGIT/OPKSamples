@@ -160,6 +160,18 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/faraway_face_check"
+                android:layout_width="60dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/faraway_detect"
+                android:textColor="#FFFFFF" />
+
+            <Button
                 android:id="@+id/robot_info"
                 android:layout_width="60dp"
                 android:layout_height="42dp"
