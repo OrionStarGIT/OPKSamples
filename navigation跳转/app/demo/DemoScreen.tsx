@@ -48,7 +48,7 @@ export class DemoScreen extends BaseComponent<BaseComponentProps, DemoViewModel,
                 <Text style={{ fontSize: 17, color: 'red' }}> {demoModel.getInfoText()}</Text>
                 <Button title={'跳转Main'} onPress={
                     () => {
-                        this.props.navigation&&this.props.navigation.navigate('main');
+                        this.props.navigation && this.props.navigation.navigate('main', {test_data: 'demo to main data'});
                     }
                 }/>
 

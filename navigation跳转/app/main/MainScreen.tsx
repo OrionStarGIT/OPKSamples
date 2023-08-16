@@ -18,6 +18,7 @@ export class MainScreen extends BaseComponent<BaseComponentProps, MainViewModel,
         super(props);
 
         console.log('MainScreen constructor');
+        console.log("传递参数", props.navigation.state.params.test_data)
 
         this.viewModel = new MainViewModel();
         let voice = new MainVoice(this.viewModel);
