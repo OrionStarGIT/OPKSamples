@@ -11,7 +11,7 @@ import { observable, action } from 'mobx';
 
 
 export class DemoModel {
-    @observable private infoText = 'Hello 鹰之眼!';
+    @observable private infoText = 'OPK语音上屏 需喊"小豹小豹"唤醒词唤醒，若需长拾音功能，详见代码';
 
     @action
     public setInfoText(infoText: string) {
