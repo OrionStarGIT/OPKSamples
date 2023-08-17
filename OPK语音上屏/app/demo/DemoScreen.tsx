@@ -1,4 +1,4 @@
-import { BaseComponent, triggerManager, BaseComponentProps } from 'orionos-eve-core';
+import { BaseComponent, triggerManager, BaseComponentProps, speechApi } from 'orionos-eve-core';
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Text, View } from 'react-native';
@@ -29,10 +29,6 @@ export class DemoScreen extends BaseComponent<BaseComponentProps, DemoViewModel,
         this.setViewModel(this.viewModel);
         this.setVoice(voice);
 
-        //若需要长拾音，请将参数改为true
-        //详情请见：https://doc.orionstar.com/blog/knowledge-base/%e8%af%ad%e9%9f%b3-2/#undefined
-        global.recognition && global.recognition.setRecognizeMode(false)
-
         //debug模式无法显示语音识别条
         //需要显示语音识别条，请使用orionos-sh run 再对小豹说"小豹小豹，打开开发者演示模式"
         global.recognition && global.recognition.setShow(true);
@@ -43,6 +39,9 @@ export class DemoScreen extends BaseComponent<BaseComponentProps, DemoViewModel,
     public componentDidMount() {
         //重写界面的didMount，必须调用super
         super.componentDidMount();
+        //若需要长拾音，请将参数改为true
+        //详情请见：https://doc.orionstar.com/blog/knowledge-base/%e8%af%ad%e9%9f%b3-2/#undefined
+        speechApi?.setRecognizeMode(true)
     }
 
     public componentWillMount() {
