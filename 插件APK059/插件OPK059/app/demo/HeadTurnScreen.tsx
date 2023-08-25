@@ -104,6 +104,8 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
         super.componentWillUnmount();
         let obj = {"intent": "stop"};
         NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, JSON.stringify(obj));
+        this.nlpApkControlListener?.removeListener();
+        console.log(TAG, "componentWillUnmount");
     }
 
     private initListener = () => {
