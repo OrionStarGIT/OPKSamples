@@ -1,5 +1,5 @@
 {
-	"name": "testDemo",
+	"name": "opk_voice",
 	"version": "0.0.2",
 	"appid": "system_2d01160272669884793b18983a46dcd0",
 	"private": true,
@@ -10,11 +10,11 @@
 		"pack": "orionos-sh pack"
 	},
 	"dependencies": {
-		"@types/react-native-snap-carousel": "^3.7.4",
+		"@types/react-native-snap-carousel": "3.7.4",
 		"eslint-plugin-orion-os": "^0.8.0",
 		"orionos-eve-core": "2.3.0",
-		"react-native-snap-carousel": "^3.8.0",
-		"rn-viewpager": "^1.2.9"
+		"react-native-snap-carousel": "3.8.0",
+		"rn-viewpager": "1.2.9"
 	},
 	"devDependencies": {
 		"@babel/core": "7.4.5",
@@ -34,7 +34,7 @@
 		"jest": "24.8.0",
 		"jsc-android": "236355.1.1",
 		"lint-staged": "8.1.6",
-		"metro-react-native-babel-preset": "0.53.1",
+		"metro-react-native-babel-preset": "0.59.0",
 		"prettier": "1.17.0",
 		"react-native-typescript-transformer": "1.2.12",
 		"react-test-renderer": "16.8.3",

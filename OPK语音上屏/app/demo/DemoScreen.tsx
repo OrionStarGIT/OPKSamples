@@ -41,7 +41,7 @@ export class DemoScreen extends BaseComponent<BaseComponentProps, DemoViewModel,
         super.componentDidMount();
         //若需要长拾音，请将参数改为true
         //详情请见：https://doc.orionstar.com/blog/knowledge-base/%e8%af%ad%e9%9f%b3-2/#undefined
-        speechApi?.setRecognizeMode(true)
+        speechApi?.setRecognizeMode(false);
     }
 
     public componentWillMount() {

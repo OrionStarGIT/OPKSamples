@@ -17,6 +17,7 @@ triggerManager.addTrigger(new DemoTrigger());
 @observer
 export class DemoScreen extends BaseComponent<BaseComponentProps, DemoViewModel, DemoVoice> {
 
+    // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
     state = {
         text: 'weixin://wxpay/bizpayurl?pr=YTvXv8Jzz',
       };
