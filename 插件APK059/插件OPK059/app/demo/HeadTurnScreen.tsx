@@ -397,14 +397,14 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                         );
                         let text = eventDataObj.text;
                         let listener = new TextListener();
-                        listener.setFinish(() => {
-                            this.return_obj.command = eventDataObj.command;
-                            this.return_obj.text = eventDataObj.text;
-                            this.return_obj.code = 1;
-                            let result = JSON.stringify(this.return_obj);
-                            NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
-                            //TODO: 播放完成
-                            listener.removeListener();
+                        listener.addListener(TextListener.EVENT_COMPLETE, () => {
+                            this.onTtsEvent(1, eventDataObj, listener);
+                        });
+                        listener.addListener(TextListener.EVENT_STOP, () => {
+                            this.onTtsEvent(2, eventDataObj, listener);
+                        });
+                        listener.addListener(TextListener.EVENT_ERROR, () => {
+                            this.onTtsEvent(3, eventDataObj, listener);
                         });
                         speechApi.playText(listener.getId(),text);
                         if (this.viewModel.getHeadAction() !== "face") {
@@ -643,6 +643,16 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
             ThirdApkInfo.PACKAGE_NAME,
             this.nlpApkControlListener.getId()
         );
+    }
+
+    private onTtsEvent = (event: number, eventDataObj: any, listener: TextListener) => {
+        this.return_obj.command = eventDataObj.command;
+        this.return_obj.text = eventDataObj.text;
+        this.return_obj.code = event;
+        let result = JSON.stringify(this.return_obj);
+        console.log(TAG, 'onTtsEvent:' + result);
+        NLPApkControl.onRobotMessage(ThirdApkInfo.PACKAGE_NAME, result);
+        listener.removeListener();
     }
 
     private triggerToOpk = (jumpNum: number): void => {
