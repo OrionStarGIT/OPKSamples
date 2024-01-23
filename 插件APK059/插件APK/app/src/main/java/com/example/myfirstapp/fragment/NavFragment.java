@@ -40,9 +40,6 @@ import com.alibaba.fastjson.JSON;
 public class NavFragment extends Fragment {
 
     private MapView mMapView;
-    private final static String MAP_DIR = "/robot/map";
-    private final static String ROBOT_MAP_DIR = Environment.getExternalStorageDirectory() + MAP_DIR;
-    private final static String MAP_PGM = "pgm.zip";
     public static boolean isCreatingMap = false;
     private static final String TAG = "NavFragment";
     private TextView mBackView;
@@ -96,7 +93,7 @@ public class NavFragment extends Fragment {
     private void setCurrentPosition(String result) {
         JSONObject jsonObj = JSON.parseObject(result);
         String mapName = jsonObj.getString("curMapName");
-        if (mapName != "" && mapName != null) {
+        if (!TextUtils.isEmpty(mapName)) {
             /*
              * setOrigin
              * 设置机器人当前位置
@@ -104,6 +101,10 @@ public class NavFragment extends Fragment {
              * */
             String poseStr = jsonObj.getString("pose");
             Log.i("SHADOW_OPK", "设置当前坐标数据: " + poseStr + "   当前地图curMapName为：" + mapName);
+            if (TextUtils.isEmpty(poseStr)) {
+                Log.e(TAG, "setCurrentPosition: 请先定位");
+                return;
+            }
             JSONObject poseObject = JSON.parseObject(poseStr);
             mMapView.setOrigin(MapppUtils.pose2PixelByRoverMap(this.mRoverMap, new Pose2d(poseObject.getDouble("px"),
                     poseObject.getDouble("py"),
@@ -175,9 +176,8 @@ public class NavFragment extends Fragment {
     private void getMap(String result) {
         JSONObject jsonObj = JSON.parseObject(result);
         String mapName = jsonObj.getString("mapName");
-        if (mapName != "") {
-            String mapPath = ROBOT_MAP_DIR + File.separator + mapName + File.separator + MAP_PGM;
-            this.mRoverMap = MapppUtils.loadMap(mapPath);
+        if (!TextUtils.isEmpty(mapName)) {
+            this.mRoverMap = MapppUtils.loadMap(mapName);
             if (this.mRoverMap != null) {
                 mMapView.setBitmap(this.mRoverMap.bitmap);
                 Log.d(TAG, "this.mRoverMap.res: " + this.mRoverMap.res);
