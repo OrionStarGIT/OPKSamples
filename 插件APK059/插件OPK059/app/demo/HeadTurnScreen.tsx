@@ -407,9 +407,9 @@ export class HeadTurnScreen extends BaseComponent<BaseComponentProps, HeadTurnVi
                             this.onTtsEvent(3, eventDataObj, listener);
                         });
                         speechApi.playText(listener.getId(),text);
-                        if (this.viewModel.getHeadAction() !== "face") {
-                            this.viewModel.setHeadAction("exit");
-                        }
+                        // if (this.viewModel.getHeadAction() !== "face") {
+                        //     this.viewModel.setHeadAction("exit");
+                        // }
                     } else if (eventDataObj.command === "speechStop") {
                         console.log(
                             TAG,
